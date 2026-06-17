@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Strike Lab - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Montserrat:ital,wght@0,600;0,700;0,800;0,900;1,900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#ffb3ae",
+                      "border-muted": "#334155",
+                      "surface-slate": "#1e293b",
+                      "surface-tint": "#a0cafc",
+                      "surface": "#0b1326",
+                      "secondary-fixed": "#d1e4ff",
+                      "tertiary": "#ffb3ae",
+                      "surface-container-lowest": "#060e20",
+                      "on-tertiary-fixed-variant": "#842324",
+                      "inverse-surface": "#dae2fd",
+                      "text-secondary": "#94a3b8",
+                      "on-tertiary-container": "#ffa39e",
+                      "on-primary-fixed-variant": "#184974",
+                      "on-primary-container": "#95bff1",
+                      "surface-container": "#171f33",
+                      "on-primary": "#003257",
+                      "surface-container-high": "#222a3d",
+                      "secondary-fixed-dim": "#9ecaff",
+                      "on-tertiary-fixed": "#410005",
+                      "outline-variant": "#42474f",
+                      "on-error": "#690005",
+                      "background": "#0b1326",
+                      "secondary": "#9ecaff",
+                      "on-background": "#dae2fd",
+                      "text-primary": "#f8fafc",
+                      "inverse-on-surface": "#283044",
+                      "primary-fixed-dim": "#a0cafc",
+                      "on-secondary": "#003258",
+                      "on-surface": "#dae2fd",
+                      "on-secondary-fixed-variant": "#00497d",
+                      "secondary-container": "#005c9c",
+                      "surface-container-highest": "#2d3449",
+                      "outline": "#8c9199",
+                      "primary-container": "#1f4e79",
+                      "surface-dim": "#0b1326",
+                      "surface-bright": "#31394d",
+                      "tertiary-fixed": "#ffdad7",
+                      "success-green": "#28a745",
+                      "on-secondary-container": "#b2d4ff",
+                      "error-container": "#93000a",
+                      "primary-fixed": "#d1e4ff",
+                      "on-error-container": "#ffdad6",
+                      "error": "#ffb4ab",
+                      "tertiary-container": "#8a2828",
+                      "primary": "#a0cafc",
+                      "surface-variant": "#2d3449",
+                      "inverse-primary": "#35618d",
+                      "on-primary-fixed": "#001d35",
+                      "on-secondary-fixed": "#001d36",
+                      "warning-yellow": "#ffc107",
+                      "on-tertiary": "#640b11",
+                      "on-surface-variant": "#c2c7d0",
+                      "surface-container-low": "#131b2e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "1rem",
+                      "stack-md": "1.5rem",
+                      "stack-lg": "3rem",
+                      "container-max": "1200px",
+                      "gutter": "1.5rem",
+                      "stack-sm": "0.5rem"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Montserrat"
+                      ],
+                      "headline-xl": [
+                              "Montserrat"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Montserrat"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "data-num": [
+                              "Montserrat"
+                      ],
+                      "headline-lg": [
+                              "Montserrat"
+                      ],
+                      "display-lg-mobile": [
+                              "Montserrat"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "72px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "900"
+                              }
+                      ],
+                      "headline-xl": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-num": [
+                              "28px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "fontWeight": "900"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        /* Minimal custom styles for things Tailwind can't handle purely via classes easily, like complex SVG strokes */
+        .progress-ring__circle {
+            transition: stroke-dashoffset 1s ease-out;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        
+        .glow-effect {
+            filter: drop-shadow(0 0 12px rgba(255, 193, 7, 0.4));
+        }
+      </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-text-primary font-body-md text-body-md min-h-screen pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="bg-surface/70 dark:bg-surface/70 backdrop-blur-md border-b border-border-muted docked full-width top-0 sticky flex justify-between items-center px-margin-mobile h-16 w-full z-50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary dark:text-secondary hover:text-primary dark:hover:text-primary transition-colors cursor-pointer" data-icon="analytics" data-weight="fill" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<h1 class="font-display-lg-mobile text-headline-lg-mobile italic tracking-tighter text-secondary dark:text-secondary">STRIKE_LAB</h1>
+</div>
+<button class="font-label-md text-label-md bg-secondary text-on-secondary px-4 py-2 rounded-lg font-bold hover:bg-primary transition-colors flex items-center gap-2">
+            UPLOAD
+            <span class="material-symbols-outlined text-[16px]">upload</span>
+</button>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-gutter pt-stack-md pb-stack-lg space-y-stack-lg">
+<!-- Hero: Fight IQ -->
+<section class="flex flex-col items-center justify-center pt-8">
+<h2 class="font-headline-md text-headline-md text-text-secondary mb-4 uppercase tracking-wider">FIGHT IQ</h2>
+<div class="relative w-64 h-64 flex items-center justify-center glow-effect">
+<svg class="w-full h-full" viewbox="0 0 100 100">
+<!-- Background track -->
+<circle class="text-surface-container-highest stroke-current" cx="50" cy="50" fill="transparent" r="40" stroke-width="8"></circle>
+<!-- Progress track (74%) -->
+<circle class="text-warning-yellow stroke-current progress-ring__circle" cx="50" cy="50" fill="transparent" r="40" stroke-dasharray="251.2" stroke-dashoffset="65.3" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute flex flex-col items-center justify-center text-center">
+<span class="font-display-lg text-display-lg text-text-primary tracking-tighter">74</span>
+<span class="font-label-md text-label-md text-warning-yellow mt-1 bg-warning-yellow/10 px-3 py-1 rounded-full border border-warning-yellow/30">GOOD</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-text-secondary mt-6 text-center max-w-sm">Consistency is key. You're showing strong fundamentals, but there's room to tighten your defense.</p>
+</section>
+<!-- Quick Stats Grid -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Stat Card 1 -->
+<div class="bg-surface-slate border border-border-muted rounded-xl p-4 flex flex-col items-center justify-center relative overflow-hidden group hover:border-secondary transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-success-green"></div>
+<span class="font-label-md text-label-md text-text-secondary uppercase tracking-wider mb-2">GUARD</span>
+<span class="font-data-num text-data-num text-text-primary">82</span>
+<span class="material-symbols-outlined absolute top-2 right-2 text-border-muted opacity-30 group-hover:opacity-100 transition-opacity">shield</span>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-surface-slate border border-border-muted rounded-xl p-4 flex flex-col items-center justify-center relative overflow-hidden group hover:border-secondary transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-warning-yellow"></div>
+<span class="font-label-md text-label-md text-text-secondary uppercase tracking-wider mb-2">DEFENSE</span>
+<span class="font-data-num text-data-num text-text-primary">70</span>
+<span class="material-symbols-outlined absolute top-2 right-2 text-border-muted opacity-30 group-hover:opacity-100 transition-opacity">sports_martial_arts</span>
+</div>
+<!-- Stat Card 3 -->
+<div class="bg-surface-slate border border-border-muted rounded-xl p-4 flex flex-col items-center justify-center relative overflow-hidden group hover:border-secondary transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-error"></div>
+<span class="font-label-md text-label-md text-text-secondary uppercase tracking-wider mb-2">FOOTWORK</span>
+<span class="font-data-num text-data-num text-text-primary">69</span>
+<span class="material-symbols-outlined absolute top-2 right-2 text-border-muted opacity-30 group-hover:opacity-100 transition-opacity">directions_run</span>
+</div>
+<!-- Stat Card 4 -->
+<div class="bg-surface-slate border border-border-muted rounded-xl p-4 flex flex-col items-center justify-center relative overflow-hidden group hover:border-secondary transition-colors">
+<div class="absolute top-0 left-0 w-1 h-full bg-warning-yellow"></div>
+<span class="font-label-md text-label-md text-text-secondary uppercase tracking-wider mb-2">ATTACK</span>
+<span class="font-data-num text-data-num text-text-primary">77</span>
+<span class="material-symbols-outlined absolute top-2 right-2 text-border-muted opacity-30 group-hover:opacity-100 transition-opacity">bolt</span>
+</div>
+</section>
+<!-- Trend Chart Area (Placeholder for actual chart integration) -->
+<section class="bg-surface-slate border border-border-muted rounded-xl p-6">
+<div class="flex justify-between items-center mb-6 border-b border-border-muted pb-4">
+<h3 class="font-headline-md text-headline-md text-text-primary">Growth Trajectory</h3>
+<span class="font-label-md text-label-md text-text-secondary">5 Months</span>
+</div>
+<div class="h-48 w-full relative flex items-end justify-between px-2">
+<!-- Decorative grid lines -->
+<div class="absolute inset-0 flex flex-col justify-between opacity-10 pointer-events-none">
+<div class="w-full h-px bg-text-secondary"></div>
+<div class="w-full h-px bg-text-secondary"></div>
+<div class="w-full h-px bg-text-secondary"></div>
+<div class="w-full h-px bg-text-secondary"></div>
+</div>
+<!-- Simulated Line Chart -->
+<svg class="absolute inset-0 w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 100 100">
+<path class="text-secondary" d="M 0 80 Q 25 70, 50 40 T 100 20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+<!-- Data points -->
+<circle class="fill-secondary" cx="0" cy="80" r="3"></circle>
+<circle class="fill-secondary" cx="25" cy="65" r="3"></circle>
+<circle class="fill-secondary" cx="50" cy="40" r="3"></circle>
+<circle class="fill-secondary" cx="75" cy="35" r="3"></circle>
+<circle class="fill-secondary" cx="100" cy="20" r="3"></circle>
+</svg>
+<!-- X Axis Labels -->
+<div class="absolute bottom-[-24px] left-0 w-full flex justify-between font-label-md text-label-md text-text-secondary">
+<span>Ocak</span>
+<span>Şubat</span>
+<span>Mart</span>
+<span>Nisan</span>
+<span>Mayıs</span>
+</div>
+</div>
+<div class="mt-8 flex justify-between items-center font-label-md text-label-md">
+<span class="text-text-secondary">Start: <span class="text-text-primary font-bold">61</span></span>
+<span class="text-success-green flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+                    +23 Pts
+                </span>
+<span class="text-text-secondary">Current: <span class="text-text-primary font-bold">84</span></span>
+</div>
+</section>
+<!-- Recent Activity -->
+<section>
+<h3 class="font-headline-md text-headline-md text-text-primary mb-4">Recent Analysis</h3>
+<div class="bg-surface-slate border border-border-muted rounded-xl p-4 flex flex-col md:flex-row gap-4 items-center hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="relative w-full md:w-48 h-28 rounded-lg overflow-hidden bg-surface-container shrink-0">
+<div class="absolute inset-0 bg-gradient-to-tr from-surface to-surface-bright opacity-80 z-10 group-hover:opacity-60 transition-opacity"></div>
+<img alt="Sparring session analysis" class="w-full h-full object-cover grayscale opacity-50 mix-blend-overlay" data-alt="A gritty, high-contrast medium shot of an MMA fighter practicing striking drills in a dark, atmospheric performance lab. The lighting is low-key, featuring a harsh spotlight on the fighter, creating deep shadows. The color palette is composed of intense blacks, clinical grays, and a stark, athletic blue accent. The overall aesthetic is professional, technical, and intensely focused, reminiscent of a high-end sports science facility." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzPfoItcCh41N6yRViiX4yLirDjrwOJugzw1jGJUUEz0M2IU9BdXi4mM-b_uleJXnGzIv4PmLB6W-jCop_8JvhNjzQWznY1yxuXhPu3HigYqEMADH73-xIrWmH8N5MlENkQPcqm6ZrDxyQzfGEixhUgzHcgCK58ZNbLvBcOEIZzElThD6EUWYLisWTd4rAchSsBj9MCCa7n-WDr8fUIlJB9TJf239hqi1cNBXy-4DJ8IcdkocMSpNRyz0GKhTP-T0_jpIgtazmySw"/>
+<!-- Overlay Badge -->
+<div class="absolute bottom-2 right-2 z-20 bg-background/90 backdrop-blur-sm border border-secondary/50 rounded px-2 py-1 flex items-center gap-1">
+<span class="font-data-num text-data-num text-[14px] text-text-primary">79</span>
+<span class="font-label-md text-label-md text-[10px] text-text-secondary">IQ</span>
+</div>
+<span class="material-symbols-outlined absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 text-white opacity-80 text-3xl group-hover:scale-110 transition-transform">play_circle</span>
+</div>
+<div class="flex-1 w-full">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-md text-label-md text-text-secondary">Sparring Session - 12 May</span>
+<span class="font-label-md text-[12px] text-success-green border border-success-green/30 bg-success-green/10 px-2 py-0.5 rounded text-uppercase tracking-wide">+2 pts</span>
+</div>
+<h4 class="font-headline-lg text-headline-lg text-text-primary mb-2">Excellent improvement in Attack!</h4>
+<p class="font-body-md text-body-md text-text-secondary text-sm">Your combinations were significantly more fluid. AI detected a 15% increase in strike accuracy during rounds 2 and 3.</p>
+</div>
+<span class="material-symbols-outlined text-text-secondary hidden md:block">chevron_right</span>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface/80 dark:bg-surface/80 backdrop-blur-lg border-t border-border-muted shadow-lg docked full-width bottom-0 fixed w-full z-50 flex justify-around items-center px-2 py-3">
+<!-- Active Tab: Home -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-3 py-1 scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home" data-weight="fill" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-md text-[10px]">Home</span>
+</a>
+<!-- Inactive Tabs -->
+<a class="flex flex-col items-center justify-center text-text-secondary hover:bg-surface-container-high transition-all rounded-xl px-3 py-1" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="history">history</span>
+<span class="font-label-md text-[10px]">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary hover:bg-surface-container-high transition-all rounded-xl px-3 py-1" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="psychology">psychology</span>
+<span class="font-label-md text-[10px]">Analysis</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary hover:bg-surface-container-high transition-all rounded-xl px-3 py-1" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="groups">groups</span>
+<span class="font-label-md text-[10px]">Social</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary hover:bg-surface-container-high transition-all rounded-xl px-3 py-1" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-md text-[10px]">Profile</span>
+</a>
+</nav>
+<!-- Desktop Side Nav (Visible only on md+) - Simulated for context -->
+<aside class="hidden md:flex flex-col fixed left-0 top-16 bottom-0 w-20 border-r border-border-muted bg-surface/50 items-center py-8 gap-8">
+<a class="p-3 bg-secondary-container text-on-secondary-container rounded-xl transition-all" href="#" title="Home">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+</a>
+<a class="p-3 text-text-secondary hover:text-primary transition-all" href="#" title="History">
+<span class="material-symbols-outlined">history</span>
+</a>
+<a class="p-3 text-text-secondary hover:text-primary transition-all" href="#" title="Analysis">
+<span class="material-symbols-outlined">psychology</span>
+</a>
+<a class="p-3 text-text-secondary hover:text-primary transition-all" href="#" title="Social">
+<span class="material-symbols-outlined">groups</span>
+</a>
+<a class="p-3 text-text-secondary hover:text-primary transition-all" href="#" title="Profile">
+<span class="material-symbols-outlined">person</span>
+</a>
+</aside>
+</body></html>

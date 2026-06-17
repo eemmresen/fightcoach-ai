@@ -1,0 +1,1135 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>FightCoach AI - Teknik ve İş Analizi Dokümanı v2.0</title><style>
+:root { --primary: #1f4e79; --secondary: #2e74b5; --accent: #c0504d; --text: #333; --bg: #f5f7fa; --card-bg: #fff; --border: #e1e4e8; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; }
+.container { max-width: 900px; margin: 0 auto; padding: 20px; }
+.title-page { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(135deg, #1a3a5c, #2e74b5, #4a90c6); color: white; margin: -20px -20px 50px; padding: 60px 20px; border-radius: 0 0 40px 40px; }
+.title-page h1 { font-size: 4.5rem; font-weight: 900; margin-bottom: 20px; text-shadow: 3px 3px 6px rgba(0,0,0,0.3); letter-spacing: 3px; }
+.title-page .subtitle { font-size: 1.6rem; opacity: 0.95; margin-bottom: 8px; font-weight: 300; }
+.title-page .version { font-size: 1rem; opacity: 0.8; margin-top: 40px; padding: 12px 35px; border: 2px solid rgba(255,255,255,0.4); border-radius: 30px; }
+.toc { background: var(--card-bg); padding: 40px; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); margin-bottom: 40px; }
+.toc h2 { color: var(--primary); font-size: 2rem; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 3px solid var(--secondary); }
+.toc-grid { display: grid; gap: 8px; }
+.toc-item { display: flex; padding: 12px 16px; border-radius: 8px; transition: all 0.2s; text-decoration: none; color: var(--text); }
+.toc-item:hover { background: #eef4fa; transform: translateX(5px); }
+.toc-item .num { color: var(--secondary); font-weight: 700; min-width: 35px; }
+.toc-item .title { flex: 1; font-weight: 500; }
+.section { background: var(--card-bg); padding: 40px; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); margin-bottom: 30px; scroll-margin-top: 20px; }
+.section h1 { color: var(--primary); font-size: 1.9rem; margin-bottom: 25px; padding-bottom: 12px; border-bottom: 3px solid var(--secondary); font-weight: 700; }
+.section h2 { color: var(--secondary); font-size: 1.3rem; margin: 30px 0 15px; padding-left: 12px; border-left: 4px solid var(--secondary); font-weight: 600; }
+.section h3 { color: var(--accent); font-size: 1.15rem; margin: 25px 0 10px; font-weight: 600; }
+.section p { margin-bottom: 14px; text-align: justify; color: #444; }
+.section ul { margin: 15px 0 15px 20px; list-style: none; }
+.section li { margin-bottom: 10px; position: relative; padding-left: 20px; }
+.section li::before { content: '▸'; position: absolute; left: 0; color: var(--secondary); font-weight: bold; }
+.section li strong { color: var(--secondary); }
+.table-wrapper { overflow-x: auto; margin: 20px 0; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; background: white; }
+th { background: linear-gradient(135deg, var(--secondary), #3a85c7); color: white; padding: 14px 12px; text-align: left; font-weight: 600; }
+td { padding: 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+tr:nth-child(even) { background: #fafbfc; }
+tr:hover { background: #f0f4f8; }
+.nav-top { position: fixed; top: 0; left: 0; right: 0; background: rgba(31,78,121,0.95); backdrop-filter: blur(10px); padding: 10px 20px; z-index: 1000; display: flex; justify-content: space-between; align-items: center; }
+.nav-top a { color: white; text-decoration: none; font-weight: 600; font-size: 14px; }
+.nav-top .nav-links { display: flex; gap: 20px; }
+.footer { text-align: center; padding: 50px 20px; color: #666; font-size: 14px; margin-top: 40px; border-top: 2px solid var(--border); background: var(--card-bg); border-radius: 16px 16px 0 0; }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--secondary); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 999; }
+@media (max-width: 768px) { .title-page h1 { font-size: 2.5rem; } .section { padding: 20px; } table { font-size: 12px; } .nav-top .nav-links { display: none; } }
+html { scroll-behavior: smooth; }
+</style></head><body><nav class="nav-top"><a href="#top">⚡ FightCoach AI</a><div class="nav-links"><a href="#toc">İçindekiler</a><a href="#s1">Özet</a><a href="#s6">Mimari</a><a href="#s10">Fight IQ</a><a href="#s13">Fiyatlandırma</a></div></nav><div class="container"><div id="top" class="title-page"><h1>FIGHTCOACH AI</h1><div class="subtitle">Yapay Zeka Destekli Dövüş Sporları Analiz Platformu</div><div class="subtitle">Teknik ve İş Analizi Dokümanı</div><div class="version">Versiyon 2.0 | Haziran 2026</div></div><div id="toc" class="toc"><h2>📑 İÇİNDEKİLER</h2><div class="toc-grid"><a href="#s1" class="toc-item"><span class="num">1.</span><span class="title">Executive Summary</span></a><a href="#s2" class="toc-item"><span class="num">2.</span><span class="title">Problem Tanımı ve Pazar Analizi</span></a><a href="#s3" class="toc-item"><span class="num">3.</span><span class="title">Çözüm ve Değer Önerisi</span></a><a href="#s4" class="toc-item"><span class="num">4.</span><span class="title">Hedef Kitle ve Kullanıcı Personaları</span></a><a href="#s5" class="toc-item"><span class="num">5.</span><span class="title">Ürün Özellikleri ve Kullanıcı Deneyimi</span></a><a href="#s6" class="toc-item"><span class="num">6.</span><span class="title">Teknik Mimari ve Altyapı</span></a><a href="#s7" class="toc-item"><span class="num">7.</span><span class="title">AI / ML Pipeline Detayları</span></a><a href="#s8" class="toc-item"><span class="num">8.</span><span class="title">Pose Detection Sistemi</span></a><a href="#s9" class="toc-item"><span class="num">9.</span><span class="title">Analiz Motoru ve Algoritmalar</span></a><a href="#s10" class="toc-item"><span class="num">10.</span><span class="title">Fight IQ Algoritması</span></a><a href="#s11" class="toc-item"><span class="num">11.</span><span class="title">AI Coach Sistemi</span></a><a href="#s12" class="toc-item"><span class="num">12.</span><span class="title">Veritabanı Şeması</span></a><a href="#s13" class="toc-item"><span class="num">13.</span><span class="title">SaaS Gelir Modeli ve Fiyatlandırma</span></a><a href="#s14" class="toc-item"><span class="num">14.</span><span class="title">Marketing ve Büyüme Stratejisi</span></a><a href="#s15" class="toc-item"><span class="num">15.</span><span class="title">Viral Büyüme Mekanizmaları</span></a><a href="#s16" class="toc-item"><span class="num">16.</span><span class="title">Risk Analizi ve Mitigasyon</span></a><a href="#s17" class="toc-item"><span class="num">17.</span><span class="title">Yol Haritası ve MVP Tanımı</span></a><a href="#s18" class="toc-item"><span class="num">18.</span><span class="title">Mali Projeksiyonlar</span></a><a href="#s19" class="toc-item"><span class="num">19.</span><span class="title">Ekip ve Organizasyon</span></a><a href="#s20" class="toc-item"><span class="num">20.</span><span class="title">Ekler ve Referanslar</span></a></div></div><div class="section" id="s1"><h1>1 EXECUTIVE SUMMARY</h1><p><strong>Platform Tanımı</strong></p><p>FightCoach AI, dövüş sporlarıyla ilgilenen bireylerin antrenman ve sparring videolarını yükleyerek yapay zeka destekli teknik analiz alabilecekleri SaaS tabanlı bir platformdur. Platform, sporcuların teknik hatalarını tespit eder, savunma eksikliklerini belirler, ayak hareketlerini analiz eder, kombinasyon çeşitliliğini ölçer ve kullanıcının zaman içerisindeki gelişimini takip eder.</p><p><strong>Konumlandırma</strong></p><p>FightCoach AI, 'ChatGPT for Fighters' değil, 'Strava for Fighters' yaklaşımıyla konumlandırılacaktır. Bu, platformun sadece bir sohbet arayüzü değil, veri odaklı, metrik bazlı, sosyal ve gelişim takibi odaklı bir ürün olacağını ifade eder.</p><p><strong>Temel Metrikler (Özet)</strong></p><div class="table-wrapper"><table>
+    <tr>
+        <th><strong>Metrik</strong></th>
+        <th><strong>Açıklama</strong></th>
+        <th><strong>Ağırlık</strong></th>
+    </tr>
+    <tr>
+        <td>Fight IQ</td>
+        <td>Genel dövüş zekası skoru (0-100)</td>
+        <td>100 Puan Toplam</td>
+    </tr>
+    <tr>
+        <td>Guard Score</td>
+        <td>Koruma pozisyonu ve çene koruması</td>
+        <td>%25</td>
+    </tr>
+    <tr>
+        <td>Defense Score</td>
+        <td>Savunma teknikleri ve reaksiyon</td>
+        <td>%25</td>
+    </tr>
+    <tr>
+        <td>Footwork Score</td>
+        <td>Ayak hareketleri ve denge</td>
+        <td>%20</td>
+    </tr>
+    <tr>
+        <td>Attack Score</td>
+        <td>Saldırı çeşitliliği ve etkinlik</td>
+        <td>%20</td>
+    </tr>
+</table>
+</div><p><strong>Teknoloji Yığını (Özet)</strong></p><p>Frontend: Next.js 14 + React 18 + Tailwind CSS + TypeScript</p><p>Backend: ASP.NET Core 8 Web API + Clean Architecture</p><p>AI Servisi: Python FastAPI + PyTorch + OpenCV + MediaPipe</p><p>Veritabanı: PostgreSQL 15 + Redis (Cache)</p><p>Bulut: AWS / Azure (Containerized Deployment)</p><p>CI/CD: GitHub Actions + Docker + Kubernetes</p></div><div class="section" id="s2"><h1>2 PROBLEM TANIMI VE PAZAR ANALIZİ</h1><h2>2.1 Temel Problemler</h2><ul><li><strong> Teknik Geri Bildirim Eksikliği: </strong>Amatör sporcuların çoğu sürekli özel koç desteği alamamaktadır. Profesyonel bir antrenörün saatlik ücreti 50-200 USD arasında değişmektedir. Ortalama bir amatör sporcu haftada sadece 1-2 kez antrenörle çalışabilmekte, geri kalan antrenmanları kendi başına yapmaktadır. Bu durum, teknik hataların fark edilememesine ve kötü alışkanlıkların pekişmesine yol açmaktadır.</li><li><strong> Video Analizinin Zorluğu: </strong>Antrenörlerin video analizi yapması oldukça zaman almaktadır. Bir 3 dakikalık sparring videosunun detaylı analizi ortalama 45-60 dakika sürmektedir. Antrenörler günde 10-15 öğrencinin videosunu inceleyememekte, bu da geri bildirim gecikmelerine ve kalite düşüşüne neden olmaktadır.</li><li><strong> Objektif Ölçüm Eksikliği: </strong>Sporcular gelişimlerini sayısal olarak takip edememektedir. Geleneksel dövüş sporları eğitiminde, gelişim çoğunlukla öznel değerlendirmelere (antrenörün gözlemi) dayanmaktadır. Sporcu, 'daha iyi oldum mu?' sorusuna nesnel bir cevap alamamaktadır.</li><li><strong> Veri Eksikliği: </strong>Sporcular kaç jab attığını, kaç kez gard düşürdüğünü, kaç kez geri çekildiğini bilmemektedir. Bu temel metriklerin eksikliği, antrenmanların verimliliğini ölçmeyi imkansız kılmaktadır. Bir koşucu kilometre başına ortalama hızını bilirken, bir boksör round başına kaç jab attığını bilememektedir.</li></ul><h2>2.2 Pazar Büyüklüğü ve Fırsat</h2><div class="table-wrapper"><table>
+    <tr>
+        <th><strong>Segment</strong></th>
+        <th><strong>Büyüklük</strong></th>
+        <th><strong>Yıllık Büyüme</strong></th>
+    </tr>
+    <tr>
+        <td>Küresel Dövüş Sporları Pazarı</td>
+        <td>~8.5 Milyar USD</td>
+        <td>%6.2 CAGR</td>
+    </tr>
+    <tr>
+        <td>Fitness Teknolojisi (Wearables)</td>
+        <td>~62 Milyar USD</td>
+        <td>%12.3 CAGR</td>
+    </tr>
+    <tr>
+        <td>Spor Analitiği (SaaS)</td>
+        <td>~3.2 Milyar USD</td>
+        <td>%18.5 CAGR</td>
+    </tr>
+    <tr>
+        <td>Dövüş Sporları Eğitimi (Online)</td>
+        <td>~450 Milyon USD</td>
+        <td>%22.1 CAGR</td>
+    </tr>
+    <tr>
+        <td>Hedef Adreslenebilir Pazar (TAM)</td>
+        <td>~2.1 Milyar USD</td>
+        <td>-</td>
+    </tr>
+</table>
+</div><h2>2.3 Rakip Analizi</h2><ul><li><strong> PunchLab: </strong>Boks eldiveni sensörleri ile darbe analizi. Donanım bağımlı, yüksek maliyet (~$200+).</li><li><strong> FightCamp: </strong>Evde boks eğitimi platformu. Canlı ders odaklı, AI analizi yok.</li><li><strong> Shadow: </strong>Boks eldiveni sensörleri. Sadece darbe hızı/gücü, teknik analiz yok.</li><li><strong> UFC Fit: </strong>Fitness uygulaması. Dövüş sporları odaklı değil, genel fitness.</li><li><strong> Coach's Eye: </strong>Genel spor video analizi. Dövüş sporlarına özgü AI motoru yok.</li></ul><p><strong>Farklılaştırıcı: </strong>FightCoach AI, donanım gerektirmeden sadece video üzerinden çalışır, dövüş sporlarına özgü AI motoruna sahiptir, ve sosyal/viral büyüme mekanizmaları içerir.</p></div><div class="section" id="s3"><h1>3 ÇÖZÜM VE DEĞER ÖNERİSİ</h1><h2>3.1 Çözüm Yapısı</h2><p>FightCoach AI, aşağıdaki yapısal bileşenleri kullanarak dövüş sporları analizini otomatize eder:</p><p>Video Yükleme → Kullanıcı MP4/MOV/AVI formatında video yükler</p><p>Pose Detection → MediaPipe/YOLO Pose ile vücut noktaları çıkarılır</p><p>Action Recognition → PyTorch tabanlı model hareketleri sınıflandırır</p><p>AI Coach → LLM tabanlı geri bildirim ve öneri üretir</p><p>Fight IQ Engine → Skorlama algoritması metrikleri hesaplar</p><p>Dashboard → Gelişim takibi, karşılaştırmalar ve raporlar</p><h2>3.2 Değer Önerisi (Value Proposition)</h2><ul><li><strong> Sporcular İçin: </strong>7/24 erişilebilir AI koç, objektif metrikler, zaman içindeki gelişim grafiği, sosyal medyada paylaşılabilir sonuçlar.</li><li><strong> Antrenörler İçin: </strong>Öğrenci performansının otomatik ölçümü, toplu raporlama, zaman tasarrufu, daha fazla öğrenci kapasitesi.</li><li><strong> Salonlar İçin: </strong>Üye bağlılığı artışı, dijital farklılaştırma, ek gelir kaynağı (Pro Coach aboneliği), veri odaklı eğitim.</li><li><strong> Federasyonlar İçin: </strong>Sporcu gelişim verisi, yetenek keşfi, performans benchmarking, ulusal düzeyde analiz.</li></ul><h2>3.3 Kullanıcı Akışı (User Journey)</h2><p><strong>1. Kayıt: </strong>E-posta veya sosyal medya ile hızlı kayıt. Temel bilgiler: spor disiplini, deneyim seviyesi, hedefler.</p><p><strong>2. Video Yükleme: </strong>Telefon veya kameradan çekilmiş antrenman/sparring videosu yüklenir. Otomatik format dönüşümü ve kalite kontrolü.</p><p><strong>3. İşlem: </strong>Video AI pipeline'a gönderilir. Pose detection, action recognition, analiz motoru çalışır. Ortalama süre: 2-5 dakika (1 dakikalık video için).</p><p><strong>4. Sonuç: </strong>Fight IQ skoru, teknik hata analizi, footwork değerlendirmesi, kombinasyon raporu sunulur.</p></div><div class="section" id="s4"><h1>5 AI Coach: Kişiselleştirilmiş geri bildirim ve öneriler</h1></div><div class="section" id="s5"><h1>6 Paylaş: Fight IQ Card oluşturulur ve sosyal medyada paylaşılabilir</h1></div><div class="section" id="s6"><h1>7 Takip: Zaman içindeki gelişim grafikleri, haftalık/aylık raporlar</h1></div><div class="section" id="s7"><h1>4 HEDEF KİTLE VE KULLANICI PERSONALARI</h1><h2>4.1 Birincil Hedef Kitle</h2><p>Boks Sporcuları (Amatör ve Profesyonel)</p><p>Kick Boks Sporcuları</p><p>Muay Thai Sporcuları</p><p>MMA Sporcuları</p><p>K-1 / Glory tarzı stand-up dövüşçüleri</p><h2>4.2 İkincil Hedef Kitle</h2><p>Dövüş Sporları Salonları (Gym Owners)</p><p>Kişisel Antrenörler (Personal Trainers)</p><p>Kulüpler ve Akademiler</p><p>Federasyonlar ve Milli Takımlar</p><p>Spor Yönetim Şirketleri</p><h2>4.3 Kullanıcı Personaları</h2><h3>Persona 1: Amatör Boksör 'Emre'</h3><p>Yaş: 24 | Deneyim: 2 yıl | Hedef: Amatör maçlara hazırlanmak</p><p>Sorun: Haftada sadece 1 kez antrenörle çalışabiliyor, kendi başına antrenman yaparken teknik hataları fark edemiyor.</p><p>Motivasyon: Daha iyi teknik, güven artışı, maçlara hazırlık.</p><p>Kullanım: Haftada 2-3 video yükleme, Fight IQ skorunu takip etme, AI Coach önerilerini uygulama.</p><p>Ödeme Gücü: Orta | Plan: Premium ($19.99/ay)</p><h3>Persona 2: Profesyonel Antrenör 'Mehmet Hoca'</h3><p>Yaş: 38 | Deneyim: 15 yıl | Hedef: 30 öğrenciyi verimli yönetmek</p><p>Sorun: Öğrencilerin videolarını tek tek incelemeye zamanı yok, geri bildirim gecikiyor.</p><p>Motivasyon: Zaman tasarrufu, öğrenci performansının objektif ölçümü, salon rekabet avantajı.</p><p>Kullanım: Tüm öğrencilerin videolarını toplu analiz, raporlama, salon paneli üzerinden yönetim.</p><p>Ödeme Gücü: Yüksek | Plan: Pro Coach ($49.99/ay)</p><h3>Persona 3: Salon Sahibi 'FitBox Gym'</h3><p>Sporcu Sayısı: 200+ | Lokasyon: İstanbul | Hedef: Dijital dönüşüm ve üye bağlılığı</p><p>Sorun: Üyeler salon dışında motivasyon kaybediyor, rekabetçi gym'ler daha teknolojik.</p><p>Motivasyon: Üye kaybını önleme, ek gelir, marka farklılaştırması.</p><p>Kullanım: Tüm üyelere AI analiz erişimi, salon içi leaderboard, sosyal medya entegrasyonu.</p><p>Ödeme Gücü: Çok Yüksek | Plan: Enterprise (Özel fiyatlandırma)</p></div><div class="section" id="s8"><h1>5 ÜRÜN ÖZELLİKLERİ VE KULLANICI DENEYİMİ</h1><h2>5.1 Video Yükleme Sistemi</h2><p><strong>Desteklenen Formatlar ve Kısıtlamalar:</strong></p><p>Formatlar: MP4 (H.264/H.265), MOV (QuickTime), AVI (MJPEG/XviD)</p><p>Maksimum Dosya Boyutu: 500 MB (Ücretsiz) / 2 GB (Premium/Pro)</p><p>Maksimum Süre: 5 dakika (Ücretsiz) / 15 dakika (Premium) / 30 dakika (Pro Coach)</p><p>Minimum Çözünürlük: 720p (1280x720) - Daha düşük çözünürlüklerde uyarı verilir</p><p>Kare Hızı: 24-60 FPS arası optimal. 30 FPS önerilir.</p><p>Kamera Açısı: Yan açı (profil) veya ön açı (45 derece) önerilir. Arkadan çekim desteklenmez.</p><p>Işık: Yeterli aydınlatma gerekli. Karanlık ortamlarda AI doğruluğu düşer.</p><p>Arka Plan: Karmaşık arka planlar (kalabalık salon) analiz doğruluğunu etkileyebilir.</p><p><strong>Video İşleme Akışı:</strong></p></div><div class="section" id="s9"><h1>1 Upload: Dosya S3/MinIO bucket'a yüklenir, metadata PostgreSQL'e kaydedilir</h1><p>2. Preprocessing: FFmpeg ile format standardizasyonu (MP4 H.264), çözünürlük normalizasyonu (1080p max).</p><p>3. Quality Check: Otomatik kalite kontrolü (blur detection, lighting analysis, pose visibility check).</p></div><div class="section" id="s10"><h1>4 Queue: RabbitMQ/Redis queue'ya gönderilir</h1></div><div class="section" id="s11"><h1>5 AI Processing: Pose detection → Action recognition → Analysis engine → Fight IQ calculation</h1></div><div class="section" id="s12"><h1>6 Results Storage: JSON sonuçlar PostgreSQL'e, görsel overlay'ler S3'e kaydedilir</h1></div><div class="section" id="s13"><h1>7 Notification: WebSocket/SSE ile kullanıcıya bildirim</h1></div><div class="section" id="s14"><h1>8 Dashboard: Sonuçlar kullanıcı panelinde görüntülenir</h1><h2>5.2 Fight IQ Analizi</h2><p>Fight IQ, kullanıcının dövüş zekasını 0-100 arası ölçen bileşik bir skordur. Her video analizi sonrası güncellenir ve zaman içindeki trendleri gösterir.</p><div class="table-wrapper"><table>
+    <tr>
+        <th><strong>Alt Skor</strong></th>
+        <th><strong>Değer</strong></th>
+        <th><strong>Açıklama</strong></th>
+    </tr>
+    <tr>
+        <td>Fight IQ (Toplam)</td>
+        <td>74/100</td>
+        <td>Genel dövüş zekası skoru</td>
+    </tr>
+    <tr>
+        <td>Guard Score</td>
+        <td>82</td>
+        <td>Koruma pozisyonu kalitesi</td>
+    </tr>
+    <tr>
+        <td>Footwork Score</td>
+        <td>69</td>
+        <td>Ayak hareketleri ve denge</td>
+    </tr>
+    <tr>
+        <td>Attack Score</td>
+        <td>77</td>
+        <td>Saldırı çeşitliliği ve etkinlik</td>
+    </tr>
+    <tr>
+        <td>Defense Score</td>
+        <td>70</td>
+        <td>Savunma teknikleri ve reaksiyon</td>
+    </tr>
+</table>
+</div><h3>Skor Renk Kodlaması:</h3><p>0-39: Kırmızı (Geliştirilmesi Gereken) - Temel teknik hatalar var</p><p>40-59: Turuncu (Orta Seviye) - İyi temel ama tutarsızlık var</p><p>60-74: Sarı (İyi) - Güçlü yönler var ama eksiklikler mevcut</p><p>75-89: Yeşil (Çok İyi) - Güçlü teknik, az hata</p><p>90-100: Mavi (Mükemmel) - Profesyonel seviye teknik</p><h2>5.3 Teknik Hata Analizi</h2><p>AI motoru, video kare kare analiz ederek aşağıdaki teknik hataları tespit eder:</p><ul><li><strong> Gard Hataları:</strong></li></ul><p>Sol gard sürekli düşüyor (el pozisyonu düşük)</p><p>Çene koruması yetersiz (el çeneye yakın değil)</p><p>Omuzlar çok düşük (koruma zayıf)</p><p>Göz teması kaybı (baş pozisyonu yanlış)</p><ul><li><strong> Saldırı Hataları:</strong></li></ul><p>Jab sonrası geri çekilmiyor (geri dönüş eksik)</p><p>Cross sırasında ağırlık merkezi kayıyor</p><p>Sağ hook sırasında denge bozuluyor</p><p>Kombinasyon sonrası pozisyon kaybı</p><p>Yeterli hip rotasyonu yok (güç aktarımı zayıf)</p><ul><li><strong> Savunma Hataları:</strong></li></ul><p>Saldırı sonrası geri çekilme yavaş</p><p>Blok pozisyonu yanlış (el yerine omuz kullanımı)</p><p>Slip/dip timing hatası</p><p>Klinch sonrası mesafe yönetimi zayıf</p><ul><li><strong> Footwork Hataları:</strong></li></ul><p>Ayaklar çaprazlanıyor (dengesizlik)</p><p>Ağırlık merkezi çok önde/arkada</p><p>Pivot hareketleri yetersiz</p><p>Ring kontrolü zayıf (geri çekilme oranı yüksek)</p><h3>Hata Şiddeti Sınıflandırması:</h3><div class="table-wrapper"><table>
+    <tr>
+        <th><strong>Şiddet</strong></th>
+        <th><strong>Tanım</strong></th>
+        <th><strong>Etki</strong></th>
+    </tr>
+    <tr>
+        <td>Kritik</td>
+        <td>Tekrarlayan, ciddi güvenlik riski</td>
+        <td>-15 puan</td>
+    </tr>
+    <tr>
+        <td>Orta</td>
+        <td>Sık görülen, performans etkisi</td>
+        <td>-8 puan</td>
+    </tr>
+    <tr>
+        <td>Düşük</td>
+        <td>Ara sıra, minimal etki</td>
+        <td>-3 puan</td>
+    </tr>
+</table>
+</div><h2>5.4 Gelişim Takibi</h2><p>Kullanıcıların zaman içindeki gelişimini takip eden kapsamlı bir dashboard sunulur:</p><p>Aylık Fight IQ trend grafiği (çizgi grafiği)</p><p>Alt skorların zaman içindeki değişimi (stacked area chart)</p><h3>Hata sayısı ve türlerinin azalma/trend analizi</h3><p>Kombinasyon çeşitliliği indeksi (zaman serisi)</p><p>Karşılaştırmalı analiz: Kendi geçmiş videolarıyla karşılaştırma</p><p>Sınıf/Seviye karşılaştırması: Aynı deneyim seviyesindeki diğer sporcularla percentile karşılaştırma</p><p>Haftalık/aylık PDF raporları (Premium özelliği)</p><p>Milestone sistemi: Belirli skorlara ulaşınca rozet/achievement</p><h3>Örnek Gelişim Verisi:</h3><div class="table-wrapper"><table>
+    <tr>
+        <th><strong>Ay</strong></th>
+        <th><strong>Fight IQ</strong></th>
+        <th><strong>Guard</strong></th>
+        <th><strong>Footwork</strong></th>
+        <th><strong>Attack</strong></th>
+    </tr>
+    <tr>
+        <td>Ocak</td>
+        <td>61</td>
+        <td>65</td>
+        <td>58</td>
+        <td>62</td>
+    </tr>
+    <tr>
+        <td>Şubat</td>
+        <td>66</td>
+        <td>70</td>
+        <td>62</td>
+        <td>68</td>
+    </tr>
+    <tr>
+        <td>Mart</td>
+        <td>73</td>
+        <td>76</td>
+        <td>68</td>
+        <td>75</td>
+    </tr>
+    <tr>
+        <td>Nisan</td>
+        <td>79</td>
+        <td>82</td>
+        <td>74</td>
+        <td>80</td>
+    </tr>
+    <tr>
+        <td>Mayıs</td>
+        <td>84</td>
+        <td>86</td>
+        <td>79</td>
+        <td>85</td>
+    </tr>
+</table>
+</div><h2>5.5 UI/UX Tasarım Prensipleri</h2><ul><li><strong> Mobil Öncelikli: </strong>Sporcuların çoğu telefon üzerinden video çeker ve sonuçları inceler. Responsive design zorunlu.</li><li><strong> Hızlı Yükleme: </strong>Analiz sonuçları 2-5 dakika içinde hazır olmalı. Progress bar ve gerçek zamanlı durum güncellemesi.</li><li><strong> Görsel Ağırlıklı: </strong>Metin yerine grafik, heatmap, video overlay kullanımı. Teknik hatalar videoda işaretlenmeli.</li><li><strong> Sosyal Entegrasyon: </strong>Tek tıkla paylaşım. Instagram/TikTok/Twitter için optimize edilmiş kart formatı.</li><li><strong> Gamification: </strong>Rozetler, leaderboard, seviye sistemi, haftalık challenge'lar.</li><li><strong> Karanlık Mod: </strong>Sporcuların çoğu akşam/antrenman sonrası kullanır. Dark mode varsayılan olabilir.</li></ul></div><div class="section" id="s15"><h1>6 TEKNİK MİMARİ VE ALTYAPI</h1><h2>6.1 Genel Mimari</h2><p>FightCoach AI, mikroservis mimarisi üzerine kuruludur. Her servis bağımsız olarak ölçeklenebilir, güncellenebilir ve yönetilebilir.</p><ul><li><strong> Client Layer: </strong>Next.js 14 (SSR/SSG), React 18, Tailwind CSS, PWA desteği, iOS/Android (Capacitor/Expo)</li><li><strong> API Gateway: </strong>Kong / AWS API Gateway - Rate limiting, authentication, routing</li><li><strong> Web API (ASP.NET Core 8): </strong>RESTful API, CQRS pattern, JWT authentication, FluentValidation</li><li><strong> AI Service (Python FastAPI): </strong>Pose detection, action recognition, analysis engine, Fight IQ calculation</li><li><strong> Message Queue: </strong>RabbitMQ / AWS SQS - Video processing queue, notification queue</li><li><strong> Storage: </strong>AWS S3 / MinIO - Video files, annotated frames, Fight IQ Cards</li><li><strong> Database: </strong>PostgreSQL 15 - Relational data, Redis - Cache &amp; Session</li><li><strong> Monitoring: </strong>Prometheus + Grafana, ELK Stack, Sentry (error tracking)</li></ul><h2>6.2 Frontend Detayları</h2><p>Framework: Next.js 14 (App Router)</p><p>UI Library: React 18 + TypeScript</p><p>Styling: Tailwind CSS + Headless UI + Radix UI primitives</p><p>State Management: Zustand (global) + React Query (server state)</p><p>Charts: Recharts + D3.js (custom visualizations)</p><p>Video Player: Video.js / Plyr (annotated video playback)</p><p>Build: Vite / Next.js built-in</p><p>Testing: Jest + React Testing Library + Cypress (E2E)</p><p>Mobile: Capacitor.js (iOS/Android wrapper) veya Expo (React Native)</p><p>PWA: Service Worker, offline cache, push notifications</p><h2>6.3 Backend Detayları (ASP.NET Core 8)</h2><p><strong>Clean Architecture Katmanları:</strong></p><ul><li><strong> Domain Layer: </strong>Entities, Value Objects, Domain Events, Repository Interfaces. Bağımsız, dış kütüphane içermez.</li><li><strong> Application Layer: </strong>Use Cases, CQRS Commands/Queries, DTOs, Validators, Service Interfaces. Domain'e bağımlı.</li><li><strong> Infrastructure Layer: </strong>DbContext, Repository Implementations, External Service Clients, Email/SMS providers. Application'a bağımlı.</li><li><strong> API Layer: </strong>Controllers, Middleware, Filters, DTO Mappings. Infrastructure'a bağımlı.</li></ul><p><strong>Kullanılan Kütüphaneler:</strong></p><p>Entity Framework Core 8 (PostgreSQL provider: Npgsql)</p><p>MediatR (CQRS pattern implementation)</p><p>AutoMapper (DTO mapping)</p><p>FluentValidation (input validation)</p><p>JWT Bearer Authentication (AspNetCore.Authentication.JwtBearer)</p><p>Serilog (structured logging)</p><p>Polly (resilience / retry policies)</p><p>Hangfire (background jobs - email, cleanup)</p><p>Swagger/OpenAPI (API documentation)</p><p>xUnit + Moq + FluentAssertions (unit testing)</p><h2>6.4 AI Servisi Detayları (Python FastAPI)</h2><p>Framework: FastAPI (async, OpenAPI auto-generated docs)</p><p>Pose Detection: MediaPipe Pose (BlazePose GHUM 3D - 33 landmarks)</p><p>Alternative: YOLOv8 Pose (17 keypoints, multi-person support)</p><p>Action Recognition: PyTorch + custom LSTM/Transformer models</p><p>Computer Vision: OpenCV (video processing, frame extraction, annotation)</p><p>ML Framework: PyTorch 2.x, TorchVision, TensorFlow Lite (mobile deployment)</p><p>Vector DB: Pinecone / Chroma (similar pose search, technique matching)</p><p>GPU Acceleration: CUDA 12.x, cuDNN, TensorRT (inference optimization)</p><p>Model Serving: TorchServe / FastAPI endpoints with model caching</p><p>Monitoring: Weights &amp; Biases (experiment tracking), MLflow (model registry)</p><h2>6.5 Deployment ve DevOps</h2><p>Containerization: Docker + Docker Compose (local), Kubernetes (production)</p><p>CI/CD: GitHub Actions (build, test, deploy)</p><p>Cloud Provider: AWS (primary) / Azure (secondary)</p><p>Compute: ECS Fargate (API), EKS (AI service with GPU nodes), Lambda (serverless functions)</p><p>CDN: CloudFront (static assets, video delivery)</p><p>Load Balancer: ALB (Application Load Balancer)</p><p>Secrets Management: AWS Secrets Manager / Azure Key Vault</p><p>SSL/TLS: Let's Encrypt / AWS ACM</p><p>Backup: AWS RDS automated backups, S3 versioning</p></div><div class="section" id="s16"><h1>7 AI / ML PIPELINE DETAYLARI</h1><h2>7.1 Pipeline Genel Akışı</h2><p><strong>1. Video Ingestion: </strong>FFmpeg ile video decode. FPS normalizasyonu (30 FPS). Keyframe extraction (her 2 saniyede 1).</p><p><strong>2. Preprocessing: </strong>Görüntü normalizasyonu (resize 256x256), renk uzayı dönüşümü (RGB), noise reduction (Gaussian blur).</p><p><strong>3. Pose Detection: </strong>MediaPipe BlazePose GHUM 3D: 33 landmark (x,y,z,visibility,presence). World coordinates (hip-centered).</p></div><div class="section" id="s17"><h1>4 Temporal Smoothing: Kalman filter / Savitzky-Golay filter ile landmark jitter giderimi</h1><p><strong>5. Action Segmentation: </strong>Sliding window (2-3 saniye) ile hareket segmentasyonu. Silence detection (hareketsiz kareler atılır).</p><p><strong>6. Action Recognition: </strong>LSTM/Transformer model ile punch türü sınıflandırması (jab, cross, hook, uppercut, slip, block, etc.).</p></div><div class="section" id="s18"><h1>7 Technique Analysis: Kural tabanlı engine + ML model ile teknik kalite değerlendirmesi</h1></div><div class="section" id="s19"><h1>8 Fight IQ Calculation: Ağırlıklı skorlama algoritması</h1></div><div class="section" id="s20"><h1>9 Report Generation: JSON sonuç + annotated video overlay + Fight IQ Card PNG</h1><h2>7.2 Pose Detection Model Seçimi</h2><p>MediaPipe Pose (BlazePose GHUM 3D) ve YOLOv8 Pose arasında karşılaştırma yapılmıştır. Her iki modelin avantajları ve dezavantajları aşağıda detaylandırılmıştır:</p><div class="table-wrapper"><table>
+    <tr>
+        <th><strong>Özellik</strong></th>
+        <th><strong>MediaPipe BlazePose</strong></th>
+        <th><strong>YOLOv8 Pose</strong></th>
+    </tr>
+    <tr>
+        <td>Landmark Sayısı</td>
+        <td>33 (COCO + Blaze Palm + Blaze Face)</td>
+        <td>17 (COCO standard)</td>
+    </tr>
+    <tr>
+        <td>Koordinatlar</td>
+        <td>Normalized + World (3D)</td>
+        <td>Normalized (2D)</td>
+    </tr>
+    <tr>
+        <td>Kişi Sayısı</td>
+        <td>Tek kişi (single-person)</td>
+        <td>Çok kişi (multi-person)</td>
+    </tr>
+    <tr>
+        <td>Hız (CPU)</td>
+        <td>~18-44 FPS (model complexity'e göre)</td>
+        <td>Daha yavaş CPU'da</td>
+    </tr>
+    <tr>
+        <td>Hız (GPU)</td>
+        <td>~19-49 FPS (TFLite GPU)</td>
+        <td>Hızlı GPU'da</td>
+    </tr>
+    <tr>
+        <td>Segmentasyon</td>
+        <td>Entegre (isteğe bağlı)</td>
+        <td>Yok</td>
+    </tr>
+    <tr>
+        <td>Model Boyutu</td>
+        <td>3-26 MB (Lite → Heavy)</td>
+        <td>Daha büyük</td>
+    </tr>
+    <tr>
+        <td>Önerilen Kullanım</td>
+        <td>Tek sporcu, shadow boxing, teknik analiz</td>
+        <td>Sparring, multi-person, rakip analizi</td>
+    </tr>
+</table>
+</div><h3>Karar: V1 için MediaPipe BlazePose (Full/Heavy) önerilir. 33 landmark, world coordinates, ve entegre segmentasyon teknik analiz için kritiktir. V2'de sparring/multi-person desteği için YOLOv8 Pose ile hybrid model geçişi yapılabilir.</h3><h2>7.3 BlazePose 33 Landmark Detayları</h2><p>MediaPipe BlazePose 33 landmark, her biri x, y, z koordinatları, visibility (görünürlük) ve presence (varlık) skorlarına sahiptir. World coordinates'te origin (0,0,0) kişinin kalçalarının ortasındadır.</p><div class="table-wrapper"><table>
+    <tr>
+        <th><strong>İndeks</strong></th>
+        <th><strong>Landmark Adı</strong></th>
+        <th><strong>Dövüş Analizindeki Rolü</strong></th>
+    </tr>
+    <tr>
+        <td>0</td>
+        <td>Nose (Burun)</td>
+        <td>Baş pozisyonu, göz teması, çene koruma mesafesi</td>
+    </tr>
+    <tr>
+        <td>1-4</td>
+        <td>Eyes / Ears (Gözler / Kulaklar)</td>
+        <td>Baş açısı, slip/dip yönü</td>
+    </tr>
+    <tr>
+        <td>5-6</td>
+        <td>Mouth (Ağız)</td>
+        <td>Çene koruma eşiği (guard up/down threshold)</td>
+    </tr>
+    <tr>
+        <td>7-8</td>
+        <td>Shoulders (Omuzlar)</td>
+        <td>Gard yüksekliği, omuz koruma pozisyonu</td>
+    </tr>
+    <tr>
+        <td>9-10</td>
+        <td>Elbows (Dirsekler)</td>
+        <td>Dirsek açısı, punch mekanik analizi</td>
+    </tr>
+    <tr>
+        <td>11-12</td>
+        <td>Wrists (Bilekler)</td>
+        <td>El pozisyonu, gard yüksekliği, punch tipi</td>
+    </tr>
+    <tr>
+        <td>13-14</td>
+        <td>Hips (Kalçalar)</td>
+        <td>Hip rotasyonu, ağırlık merkezi, pivot</td>
+    </tr>
+    <tr>
+        <td>15-16</td>
+        <td>Knees (Dizler)</td>
+        <td>Diz bükülmesi, denge, ayak pozisyonu</td>
+    </tr>
+    <tr>
+        <td>17-18</td>
+        <td>Ankles (Ayak Bilekleri)</td>
+        <td>Ayak hareketleri, footwork mesafesi</td>
+    </tr>
+    <tr>
+        <td>19-22</td>
+        <td>Fingers (Parmaklar)</td>
+        <td>Eldiven pozisyonu (opsiyonel, düşük güvenilirlik)</td>
+    </tr>
+    <tr>
+        <td>23-32</td>
+        <td>Toes / Heels (Ayak parmakları / Topuklar)</td>
+        <td>Ayak açıklığı, pivot noktası</td>
+    </tr>
+</table>
+</div><h2>7.4 Action Recognition Modeli</h2><p>Hareket tanıma, pose sequence'leri üzerinden LSTM (Long Short-Term Memory) veya Transformer tabanlı bir model ile gerçekleştirilir.</p><ul><li><strong> Input: </strong>33 landmark x 3 koordinat (x,y,z) = 99 features per frame. Sliding window: 30 frames (1 saniye @ 30 FPS).</li><li><strong> Preprocessing: </strong>Normalization: Min-max scaling per joint. Temporal subsampling: Her 2. frame alınır (15 FPS effective).</li><li><strong> Feature Engineering: </strong>Joint angles (dirsek, diz, kalça açıları), joint velocities (hareket hızı), center of mass trajectory.</li><li><strong> Model Architecture: </strong>BiLSTM (2 layers, 128 hidden units) + Attention mechanism + Dense (64) + Softmax (8 classes).</li><li><strong> Output Classes: </strong>Jab, Cross, Left Hook, Right Hook, Left Uppercut, Right Uppercut, Slip, Block, Weave, Clinch, Footwork</li><li><strong> Training Data: </strong>Özelleştirilmiş dataset: 10,000+ annotated video clips, her biri 3-5 saniye, 8 farklı açıdan çekim.</li><li><strong> Augmentation: </strong>Random rotation, scaling, time warping, noise injection (landmark jitter simulation).</li><li><strong> Validation: </strong>K-fold cross validation (k=5), confusion matrix analysis, per-class F1-score.</li></ul></div><div class="section" id="s21"><h1>8 POSE DETECTION SİSTEMİ</h1><h2>8.1 MediaPipe Pose Entegrasyonu</h2><ul><li><strong> Model Complexity: </strong>3 seviye: Lite (hızlı, düşük doğruluk), Full (dengeli), Heavy (en yüksek doğruluk). V1'de Full önerilir.</li><li><strong> Static Image Mode: </strong>False (video stream mode). Landmark'lar frame-to-frame smoothing ile daha stabil.</li><li><strong> Smooth Landmarks: </strong>True. Kalman filter benzeri temporal smoothing aktif.</li><li><strong> Min Detection Confidence: </strong>0.5 (görüntüde kişi tespiti için minimum güven skoru).</li><li><strong> Min Tracking Confidence: </strong>0.5 (frame-to-frame tracking için minimum güven skoru).</li><li><strong> Enable Segmentation: </strong>True (isteğe bağlı). Kişi maskesi çıkarımı, arka plan gürültüsünü azaltır.</li><li><strong> Smooth Segmentation: </strong>True. Maske temporal smoothing.</li></ul><h2>8.2 Landmark Koordinat Sistemi</h2><p>MediaPipe iki koordinat sistemi sunar. Dövüş analizi için her ikisi de kullanılır:</p><div class="table-wrapper"><table>
+    <tr>
+        <th><strong>Koordinat Tipi</strong></th>
+        <th><strong>Açıklama</strong></th>
+        <th><strong>Kullanım Alanı</strong></th>
+    </tr>
+    <tr>
+        <td>Normalized (x,y)</td>
+        <td>[0.0, 1.0] arası, görüntü boyutlarına göre normalize</td>
+        <td>Görsel overlay, ekran koordinatları</td>
+    </tr>
+    <tr>
+        <td>World (x,y,z)</td>
+        <td>Metrik (cm), hip-centered, real-world scale</td>
+        <td>3D analiz, mesafe ölçümü, açı hesaplama</td>
+    </tr>
+    <tr>
+        <td>Visibility</td>
+        <td>[0.0, 1.0], landmark'ın görünürlük olasılığı</td>
+        <td>Occlusion handling, güvenilirlik filtresi</td>
+    </tr>
+</table>
+</div><h2>8.3 Kalman Filter ile Temporal Smoothing</h2><p>Video analizinde landmark'lar frame-to-frame jitter (titreşim) gösterebilir. Bu, hareket hızı ve ivme hesaplamalarını olumsuz etkiler. Kalman filter ile her landmark'ın pozisyonu ve hızı tahmin edilir:</p><p>State Vector: [x, y, z, vx, vy, vz] - Pozisyon ve hız</p><p>Measurement: Her frame'de MediaPipe çıktısı [x, y, z]</p><p>Process Noise: Q = diag(0.01, 0.01, 0.01, 0.1, 0.1, 0.1)</p><p>Measurement Noise: R = diag(0.05, 0.05, 0.05) - visibility skoruna göre adaptif</p><p>Adaptif R: visibility &lt; 0.7 ise R artırılır (düşük güven = daha fazla smoothing)</p><p>Alternatif: Savitzky-Golay filter (polynomial fitting, window size=7)</p><h2>8.4 Occlusion (Gizlenme) Yönetimi</h2><p>Sparring sırasında sporcular birbirini kapatabilir, eller yüzü kapatabilir. Bu durumda:</p><p>visibility &lt; 0.5 olan landmark'lar 'missing' olarak işaretlenir.</p><p>Linear interpolation: Önceki ve sonraki frame'lerden eksik landmark tahmini.</p><p>Skeleton-based inference: Bilinen eklemlerden (örn. omuz + dirsek → bilek tahmini) kinematik zincir.</p><p>Multi-camera fusion (V2): Birden fazla açıdan çekim varsa, en yüksek visibility'li landmark seçilir.</p><p>Confidence scoring: Her tahmin için güven skoru hesaplanır, düşük güvenli tahminler raporda belirtilir.</p><h2>8.5 Performans Optimizasyonu</h2><div class="table-wrapper"><table>
+    <tr>
+        <th><strong>Optimizasyon</strong></th>
+        <th><strong>Açıklama</strong></th>
+        <th><strong>Hız Kazancı</strong></th>
+        <th><strong>Doğruluk Etkisi</strong></th>
+    </tr>
+    <tr>
+        <td>Frame Skipping</td>
+        <td>Her 2. frame analiz edilir</td>
+        <td>2x</td>
+        <td>Minimal (temporal smoothing telafi eder)</td>
+    </tr>
+    <tr>
+        <td>Region of Interest (ROI)</td>
+        <td>Sadece ring/ring alanı analiz edilir</td>
+        <td>1.5x</td>
+        <td>Yok (arka plan gürültüsü azalır)</td>
+    </tr>
+    <tr>
+        <td>TensorRT Optimization</td>
+        <td>NVIDIA GPU'da FP16 inference</td>
+        <td>3-5x</td>
+        <td>Negatif &lt;1%</td>
+    </tr>
+    <tr>
+        <td>Batch Processing</td>
+        <td>Birden fazla video paralel işlenir</td>
+        <td>N x GPU sayısı</td>
+        <td>Yok</td>
+    </tr>
+</table>
+</div></div><div class="section" id="s22"><h1>9 ANALİZ MOTORU VE ALGORİTMALAR</h1><h2>9.1 Guard Analizi</h2><p>Guard analizi, sporcu savunma pozisyonunun kalitesini değerlendirir. MediaPipe landmark'ları üzerinden aşağıdaki metrikler hesaplanır:</p><ul><li><strong> El Pozisyonu (Hand Position): </strong>Wrist (11,12) landmark'larının yüksekliği. İdeal: Burun (0) seviyesinde veya üzerinde. Threshold: wrist_y &lt; nose_y + 0.05 (normalized). Skor: 0-100, linear interpolation.</li><li><strong> Çene Koruması (Chin Protection): </strong>Wrist-to-chin mesafesi. Chin landmark (mouth_left + mouth_right ortalaması). İdeal: &lt; 0.08 normalized units (~8cm). Skor: inverse distance mapping.</li><li><strong> Omuz Yüksekliği (Shoulder Elevation): </strong>Shoulder (7,8) landmark'larının yüksekliği. İdeal: Kulak (3,4) seviyesinde veya üzerinde. Düşük omuz = zayıf gard. Skor: shoulder_y &lt; ear_y threshold.</li><li><strong> Gard Genişliği (Guard Width): </strong>İki elin x-ekseni mesafesi. İdeal: Omuz genişliğinin 0.8-1.2 katı. Çok dar = zayıf koruma, çok geniş = açık hedef.</li><li><strong> Gard Tutarlılığı (Guard Consistency): </strong>Video boyunca gard pozisyonunun varyansı. Düşük varyans = stabil gard, yüksek varyans = sürekli düşen/el kaldıran gard.</li></ul><h2>9.2 Footwork Analizi</h2><p>Footwork, dövüş sporlarının en kritik ancak en zor ölçülebilen bileşenidir. Aşağıdaki metrikler kullanılır:</p><ul><li><strong> Ayak Açıklığı (Stance Width): </strong>Ankle (15,16) landmark'larının x-ekseni mesafesi. İdeal: Kalça genişliğinin 1.2-1.8 katı. Düşük = dar duruş (dengesiz), yüksek = çok geniş (hareket kısıtlı).</li><li><strong> Ağırlık Merkezi (Center of Mass): </strong>Hip (13,14) landmark'larının ortalaması. İdeal: Ayaklar arasında, hafifçe önde (60% ön ayak). Çok önde = savunmasız, çok arkada = hareket kısıtlı.</li><li><strong> Denge Skoru (Balance Score): </strong>COM (Center of Mass) trajectory'nin varyansı. Düşük varyans = stabil, yüksek varyans = sallantılı. COM hızı: ideal &lt; 0.15 m/s (idle), &lt; 0.5 m/s (movement).</li><li><strong> Ayak Çaprazlanması (Foot Crossing): </strong>Ankle x-koordinatlarının çaprazlanma tespiti. Ayaklar çaprazlanıyorsa kritik hata (-15 puan). Detection: ankle_left.x &gt; ankle_right.x (sağ ayak solun önünde olmamalı).</li><li><strong> Pivot Kalitesi (Pivot Quality): </strong>Hip rotasyon açısı. İdeal cross hook için 45-90 derece hip rotation. Hip angle = atan2(hip.y - knee.y, hip.x - knee.x).</li><li><strong> Ring Kontrolü (Ring Control): </strong>Sporcunun video frame içindeki konum değişimi. Sürekli geri çekilme = pasif footwork. x-koordinat trend analizi (linear regression slope).</li></ul><h2>9.3 Kombinasyon Analizi</h2><p>Kombinasyon analizi, sporcu saldırı çeşitliliğini ve etkinliğini değerlendirir:</p><ul><li><strong> Punch Sınıflandırma: </strong>LSTM model çıktısı: jab, cross, hook, uppercut. Her punch için confidence threshold: 0.75.</li><li><strong> Kombinasyon Zinciri: </strong>Ardışık punch'lar kombinasyon olarak gruplanır. Örnek: jab → cross = '1-2', jab → cross → hook = '1-2-3'.</li><li><strong> Çeşitlilik İndeksi (Diversity Index): </strong>Shannon Entropy: H = -Σ p(i) * log2(p(i)). p(i) = i. punch tipinin toplam punch sayısına oranı. Yüksek entropy = çeşitli kombinasyonlar, düşük entropy = tekrarlayan tek tip saldırı.</li><li><strong> Kombinasyon Uzunluğu: </strong>Ortalama kombinasyon uzunluğu. İdeal: 3-5 punch. Çok kısa = tekli saldırılar, çok uzun = açık savunma riski.</li><li><strong> Kombinasyon Aralığı (Recovery Time): </strong>İki kombinasyon arasındaki süre. İdeal: 1-2 saniye. Çok uzun = pasif, çok kısa = yorgunluk/risk.</li><li><strong> Etkinlik Oranı (Effectiveness Ratio): </strong>Kombinasyon sonrası savunma pozisyonuna dönüş süresi. Hızlı dönüş = yüksek etkinlik.</li></ul><h2>9.4 Savunma Analizi</h2><ul><li><strong> Blok Pozisyonu: </strong>Saldırı anında el pozisyonu. İdeal: Saldırı gelen tarafın omuzu ile aynı hizada. Detection: punch_direction + wrist_position correlation.</li><li><strong> Slip/Dip Timing: </strong>Baş hareketinin punch timing'i ile uyumu. İdeal: Punch başlangıcından 100-200ms önce baş hareketi. Detection: head_velocity spike + punch_start frame correlation.</li><li><strong> Mesafe Yönetimi: </strong>Saldırı sonrası mesafe koruma. İdeal: Saldırı sonrası 1.5-2.5 kolluk mesafe. Detection: COM velocity reversal + distance maintenance.</li><li><strong> Counter Attack Readiness: </strong>Savunma sonrası saldırı pozisyonuna geçiş hızı. İdeal: &lt; 300ms. Detection: defense_end → guard_restore → attack_start timeline.</li></ul></div><div class="section" id="s23"><h1>10 FIGHT IQ ALGORİTMASI</h1><h2>10.1 Skorlama Ağırlıkları</h2><p>Fight IQ, 5 alt skorun ağırlıklı ortalamasıdır. Ağırlıklar spor disiplinine göre ayarlanabilir:</p><div class="table-wrapper"><table>
+    <tr>
+        <th><strong>Alt Skor</strong></th>
+        <th><strong>Ağırlık</strong></th>
+        <th><strong>Boks</strong></th>
+        <th><strong>MMA</strong></th>
+    </tr>
+    <tr>
+        <td>Guard Score</td>
+        <td>%25</td>
+        <td>%25</td>
+        <td>%20</td>
+    </tr>
+    <tr>
+        <td>Defense Score</td>
+        <td>%25</td>
+        <td>%20</td>
+        <td>%20</td>
+    </tr>
+    <tr>
+        <td>Footwork Score</td>
+        <td>%20</td>
+        <td>%20</td>
+        <td>%15</td>
+    </tr>
+    <tr>
+        <td>Attack Score</td>
+        <td>%20</td>
+        <td>%25</td>
+        <td>%25</td>
+    </tr>
+    <tr>
+        <td>Consistency Score</td>
+        <td>%10</td>
+        <td>%10</td>
+        <td>%10</td>
+    </tr>
+    <tr>
+        <td>Toplam</td>
+        <td>100%</td>
+        <td>100%</td>
+        <td>100%</td>
+    </tr>
+</table>
+</div><h2>10.2 Her Alt Skorun Hesaplama Formülü</h2><p><strong>Guard Score (0-100):</strong></p><p>Hand Position Score (HPS): wrist_y &lt; nose_y + 0.05 → 100, linear decay to 0 at wrist_y &gt; chin_y</p><p>Chin Protection Score (CPS): distance(wrist, chin) &lt; 0.08 → 100, inverse linear to 0 at &gt; 0.20</p><p>Shoulder Elevation Score (SES): shoulder_y &lt; ear_y → 100, linear decay to 0 at shoulder_y &gt; hip_y</p><p>Guard Width Score (GWS): |wrist_distance - shoulder_width| &lt; 0.1 → 100, linear decay</p><p>Guard Consistency Score (GCS): 100 - (std_dev_guard_position * 200)</p><p>Guard Score = 0.30*HPS + 0.25*CPS + 0.20*SES + 0.15*GWS + 0.10*GCS</p><p><strong>Defense Score (0-100):</strong></p><p>Block Position Score (BPS): correct_block / total_attacks * 100</p><p>Slip Timing Score (STS): correct_slip_timing / total_slips * 100</p><p>Distance Management Score (DMS): optimal_distance_frames / total_frames * 100</p><p>Counter Readiness Score (CRS): fast_recovery / total_defenses * 100</p><p>Defense Score = 0.30*BPS + 0.25*STS + 0.25*DMS + 0.20*CRS</p><p><strong>Footwork Score (0-100):</strong></p><p>Stance Width Score (SWS): optimal_stance_frames / total_frames * 100</p><p>Balance Score (BS): 100 - (COM_variance * 500)</p><p>Foot Crossing Penalty (FCP): -15 * foot_crossing_count (min 0)</p><p>Pivot Quality Score (PQS): optimal_pivot / total_pivots * 100</p><p>Ring Control Score (RCS): forward_movement_ratio (ideal: 0.4-0.6)</p><p>Footwork Score = 0.25*SWS + 0.25*BS + 0.20*PQS + 0.20*RCS + FCP (capped at 0-100)</p><p><strong>Attack Score (0-100):</strong></p><p>Punch Variety Score (PVS): Shannon_entropy(punch_distribution) / max_entropy * 100</p><p>Combination Length Score (CLS): avg_combo_length / 5 * 100 (capped at 100)</p><p>Recovery Score (RS): optimal_recovery / total_combos * 100</p><p>Hip Rotation Score (HRS): optimal_hip_rotation / total_punches * 100</p><p>Attack Score = 0.30*PVS + 0.25*CLS + 0.25*RS + 0.20*HRS</p><p><strong>Consistency Score (0-100):</strong></p><p>Frame-to-frame skor varyansı: std_dev(FightIQ_per_frame) * (-50) + 100</p><h3>Hata tekrar oranı: unique_errors / total_errors * 100</h3><p>Pacing Consistency: optimal_punch_interval / actual_interval * 100</p><p>Consistency Score = 0.40*skor_variance + 0.35*error_uniqueness + 0.25*pacing</p><h2>10.3 Fight IQ Hesaplama</h2><p><strong>Final Formül:</strong></p><p><strong>Fight IQ = 0.25*Guard + 0.25*Defense + 0.20*Footwork + 0.20*Attack + 0.10*Consistency</strong></p><p>Sonuç 0-100 arası normalize edilir. Negatif değerler 0, 100'ü aşan değerler 100 olarak sınırlandırılır.</p><h2>10.4 Zaman İçindeki Skor Trendi</h2><p>Her video analizi sonrası skorlar kaydedilir. Trend analizi için:</p><p>Moving Average: Son 5 videonun ağırlıklı ortalaması (en son video: 0.4, önceki: 0.3, 0.2, 0.1)</p><p>Linear Regression: Son 10 video üzerinden eğim (slope) hesaplanır. Pozitif slope = gelişim, negatif = gerileme.</p><p>Seasonal Adjustment: Aynı antrenman tipi (shadow, sparring, bag) içinde karşılaştırma.</p><p>Percentile Ranking: Aynı deneyim seviyesindeki diğer kullanıcılarla karşılaştırma.</p></div><div class="section" id="s24"><h1>11 AI COACH SİSTEMİ</h1><h2>11.1 Sistem Mimarisi</h2><p>AI Coach, analiz motorunun çıktılarını LLM (Large Language Model) ile işleyerek kişiselleştirilmiş, doğal dilde geri bildirim üreten bir alt sistemdir.</p><ul><li><strong> Input Layer: </strong>Analiz motoru JSON çıktısı: skorlar, hatalar, metrikler, önceki video karşılaştırması.</li><li><strong> Context Builder: </strong>Kullanıcı profili (deneyim, hedef, spor disiplini) + geçmiş analizler + trend verisi.</li><li><strong> Prompt Engineering: </strong>Structured prompt: System prompt (coach persona) + Context + Analysis data + Output format.</li><li><strong> LLM Engine: </strong>OpenAI GPT-4o / Claude 3.5 Sonnet / Local LLM (Llama 3 70B). Temperature: 0.7 (yaratıcı ama tutarlı).</li><li><strong> Output Formatter: </strong>JSON schema validation + Markdown formatting + Highlighted keywords.</li><li><strong> Feedback Loop: </strong>Kullanıcı rating (thumbs up/down) ile prompt ve model tuning.</li></ul><h2>11.2 Prompt Template</h2><p><strong>System Prompt:</strong></p><p>Sen deneyimli bir dövüş sporları antrenörüsün. {discipline} alanında {experience_level} seviyesindeki 
+{user_name} adlı sporcuya geri bildirim veriyorsun. Tonun motive edici, yapıcı ve profesyonel olmalı. 
+Teknik terimleri doğru kullan ama aşırı jargon'dan kaçın. Her geri bildirim şu yapıda olmalı:
+
+1. GENEL DEĞERLENDİRME (2-3 cümle)
+2. GÜÇLÜ YÖNLER (2-3 madde)
+3. GELİŞTİRİLMESİ GEREKEN ALANLAR (2-3 madde + öneri)
+4. ÖNCEKİ VİDEO İLE KARŞILAŞTIRMA (varsa)
+5. ANTRENMAN ÖNERİSİ (1-2 egzersiz)
+
+Şu verileri kullan:
+- Fight IQ: {fight_iq}/100
+- Guard: {guard_score}, Defense: {defense_score}, Footwork: {footwork_score}, Attack: {attack_score}
+- Tespit edilen hatalar: {errors}
+- Kombinasyon çeşitliliği: {combo_diversity}
+- Önceki video Fight IQ: {previous_fight_iq} (varsa)</p><h2>11.3 Örnek AI Coach Çıktısı</h2><p>GENEL DEĞERLENDİRME
+Son videonda Fight IQ skorun 74'e yükselmiş, bu harika bir gelişim! Özellikle gard pozisyonun 
+daha stabil ve kombinasyon çeşitliliğin artmış.
+
+GÜÇLÜ YÖNLER
+• Gard skorun 82 ile çok iyi seviyede. Ellerin sürekli yukarıda ve çene koruması güçlü.
+• Kombinasyon çeşitliliğin önceki videoya göre %23 arttı. Artık sadece 1-2 değil, 1-2-3-2 
+  kombinasyonlarını da kullanıyorsun.
+• Saldırı sonrası geri çekilme hızın iyileşmiş, bu savunma skorunu 70'e taşımış.
+
+GELİŞTİRİLMESİ GEREKEN ALANLAR
+• Sağ hook sırasında denge bozuluyor (Footwork: 69). Ağırlık merkezin sağa kayıyor. 
+  ÖNERİ: Aynada sağ hook + pivot drill'i 3 set x 1 dakika çalış.
+• Sol gard ara sıra düşüyor, özellikle yorulduğunda. ÖNERİ: Shadow boxing sırasında 
+  her 30 saniyede bir gard kontrolü yap, telefonuna hatırlatıcı kur.
+• Cross sonrası geri dönüş yavaş. ÖNERİ: Double-end bag çalışması, cross + slip + counter ritmini geliştir.
+
+KARŞILAŞTIRMA
+Önceki video (Mart): Fight IQ 68 → Şimdi: 74 (+8.8%). En büyük gelişim Attack skorunda 
+(+9 puan). Footwork hala zayıf noktan, buraya odaklanmalısın.
+
+ANTRENMAN ÖNERİSİ
+Bu hafta: Her gün 10 dakika ladder drill (footwork) + 3 set x 2 dakika heavy bag 
+(1-2-3-2 kombinasyon odaklı). Sonraki videoda footwork skorunu 75+ hedefle.</p><h2>11.4 Özelleştirme Seviyeleri</h2><ul><li><strong> Temel (Ücretsiz): </strong>Genel geri bildirim, 3-4 cümle, skor özetli.</li><li><strong> Premium: </strong>Detaylı analiz, karşılaştırmalı değerlendirme, antrenman önerileri, haftalık rapor.</li><li><strong> Pro Coach: </strong>Salon bazlı öneriler, grup karşılaştırmaları, antrenör raporları, PDF export.</li></ul></div><div class="section" id="s25"><h1>12 VERİTABANI ŞEMASI</h1><h2>12.1 Entity Relationship Diagram (ERD) Özeti</h2><p>PostgreSQL 15 üzerinde aşağıdaki ana tablolar bulunur. Her tablo için alanlar, tipler, kısıtlamalar ve ilişkiler detaylandırılmıştır.</p><h3>Tablo: Users</h3><div class="table-wrapper"><table>
+    <tr>
+        <th><strong>Kolon</strong></th>
+        <th><strong>Tip</strong></th>
+        <th><strong>Kısıtlama</strong></th>
+        <th><strong>Açıklama</strong></th>
+    </tr>
+    <tr>
+        <td>Id</td>
+        <td>UUID</td>
+        <td>PK</td>
+        <td>Benzersiz kullanıcı ID</td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>VARCHAR(255)</td>
+        <td>UNIQUE, NOT NULL</td>
+        <td>Giriş e-posta adresi</td>
+    </tr>
+    <tr>
+        <td>PasswordHash</td>
+        <td>VARCHAR(255)</td>
+        <td>NOT NULL</td>
+        <td>BCrypt hash</td>
+    </tr>
+    <tr>
+        <td>FirstName</td>
+        <td>VARCHAR(100)</td>
+        <td>NOT NULL</td>
+        <td>Ad</td>
+    </tr>
+    <tr>
+        <td>LastName</td>
+        <td>VARCHAR(100)</td>
+        <td>NOT NULL</td>
+        <td>Soyad</td>
+    </tr>
+    <tr>
+        <td>Discipline</td>
+        <td>VARCHAR(50)</td>
+        <td>NOT NULL</td>
+        <td>Boks, KickBoks, MuayThai, MMA</td>
+    </tr>
+    <tr>
+        <td>ExperienceLevel</td>
+        <td>VARCHAR(20)</td>
+        <td>NOT NULL</td>
+        <td>Beginner, Intermediate, Advanced, Pro</td>
+    </tr>
+    <tr>
+        <td>DateOfBirth</td>
+        <td>DATE</td>
+        <td></td>
+        <td>Doğum tarihi</td>
+    </tr>
+    <tr>
+        <td>Weight</td>
+        <td>DECIMAL(5,2)</td>
+        <td></td>
+        <td>Kilo (kg)</td>
+    </tr>
+    <tr>
+        <td>Height</td>
+        <td>DECIMAL(5,2)</td>
+        <td></td>
+        <td>Boy (cm)</td>
+    </tr>
+</table>
+</div><h3>Tablo: Videos</h3><div class="table-wrapper"><table>
+    <tr>
+        <th><strong>Kolon</strong></th>
+        <th><strong>Tip</strong></th>
+        <th><strong>Kısıtlama</strong></th>
+        <th><strong>Açıklama</strong></th>
+    </tr>
+    <tr>
+        <td>Id</td>
+        <td>UUID</td>
+        <td>PK</td>
+        <td>Benzersiz video ID</td>
+    </tr>
+    <tr>
+        <td>UserId</td>
+        <td>UUID</td>
+        <td>FK → Users</td>
+        <td>Video sahibi</td>
+    </tr>
+    <tr>
+        <td>Title</td>
+        <td>VARCHAR(255)</td>
+        <td></td>
+        <td>Video başlığı</td>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td>TEXT</td>
+        <td></td>
+        <td>Açıklama</td>
+    </tr>
+    <tr>
+        <td>OriginalUrl</td>
+        <td>VARCHAR(500)</td>
+        <td>NOT NULL</td>
+        <td>S3/MinIO URL</td>
+    </tr>
+    <tr>
+        <td>ProcessedUrl</td>
+        <td>VARCHAR(500)</td>
+        <td></td>
+        <td>İşlenmiş video URL</td>
+    </tr>
+    <tr>
+        <td>Duration</td>
+        <td>INTEGER</td>
+        <td></td>
+        <td>Saniye cinsinden süre</td>
+    </tr>
+    <tr>
+        <td>Resolution</td>
+        <td>VARCHAR(20)</td>
+        <td></td>
+        <td>1080p, 720p, etc.</td>
+    </tr>
+    <tr>
+        <td>FileSize</td>
+        <td>BIGINT</td>
+        <td></td>
+        <td>Byte cinsinden boyut</td>
+    </tr>
+    <tr>
+        <td>Status</td>
+        <td>VARCHAR(20)</td>
+        <td>NOT NULL</td>
+        <td>Uploaded, Processing, Completed, Failed</td>
+    </tr>
+    <tr>
+        <td>UploadedAt</td>
+        <td>TIMESTAMP</td>
+        <td>NOT NULL</td>
+        <td>Yükleme zamanı</td>
+    </tr>
+</table>
+</div><h3>Tablo: AnalysisResults</h3><div class="table-wrapper"><table>
+    <tr>
+        <th><strong>Kolon</strong></th>
+        <th><strong>Tip</strong></th>
+        <th><strong>Kısıtlama</strong></th>
+        <th><strong>Açıklama</strong></th>
+    </tr>
+    <tr>
+        <td>Id</td>
+        <td>UUID</td>
+        <td>PK</td>
+        <td>Benzersiz analiz ID</td>
+    </tr>
+    <tr>
+        <td>VideoId</td>
+        <td>UUID</td>
+        <td>FK → Videos</td>
+        <td>Analiz edilen video</td>
+    </tr>
+    <tr>
+        <td>FightIq</td>
+        <td>INTEGER</td>
+        <td>NOT NULL</td>
+        <td>0-100 arası skor</td>
+    </tr>
+    <tr>
+        <td>GuardScore</td>
+        <td>INTEGER</td>
+        <td>NOT NULL</td>
+        <td>0-100</td>
+    </tr>
+    <tr>
+        <td>DefenseScore</td>
+        <td>INTEGER</td>
+        <td>NOT NULL</td>
+        <td>0-100</td>
+    </tr>
+    <tr>
+        <td>FootworkScore</td>
+        <td>INTEGER</td>
+        <td>NOT NULL</td>
+        <td>0-100</td>
+    </tr>
+    <tr>
+        <td>AttackScore</td>
+        <td>INTEGER</td>
+        <td>NOT NULL</td>
+        <td>0-100</td>
+    </tr>
+    <tr>
+        <td>ConsistencyScore</td>
+        <td>INTEGER</td>
+        <td>NOT NULL</td>
+        <td>0-100</td>
+    </tr>
+    <tr>
+        <td>ErrorsJson</td>
+        <td>JSONB</td>
+        <td></td>
+        <td>Tespit edilen hatalar [{type, severity, timestamp, description}]</td>
+    </tr>
+    <tr>
+        <td>CombinationsJson</td>
+        <td>JSONB</td>
+        <td></td>
+        <td>Kombinasyonlar [{sequence, timestamp, confidence}]</td>
+    </tr>
+    <tr>
+        <td>LandmarksJson</td>
+        <td>JSONB</td>
+        <td></td>
+        <td>Pose landmark'ları (opsiyonel, büyük veri)</td>
+    </tr>
+    <tr>
+        <td>AiCoachFeedback</td>
+        <td>TEXT</td>
+        <td></td>
+        <td>AI Coach geri bildirimi</td>
+    </tr>
+    <tr>
+        <td>ProcessingTime</td>
+        <td>INTEGER</td>
+        <td></td>
+        <td>Milisaniye cinsinden işlem süresi</td>
+    </tr>
+    <tr>
+        <td>CreatedAt</td>
+        <td>TIMESTAMP</td>
+        <td>NOT NULL</td>
+        <td>Analiz zamanı</td>
+    </tr>
+</table>
+</div><h3>Tablo: Subscriptions</h3><div class="table-wrapper"><table>
+    <tr>
+        <th><strong>Kolon</strong></th>
+        <th><strong>Tip</strong></th>
+        <th><strong>Kısıtlama</strong></th>
+        <th><strong>Açıklama</strong></th>
+    </tr>
+    <tr>
+        <td>Id</td>
+        <td>UUID</td>
+        <td>PK</td>
+        <td>Benzersiz abonelik ID</td>
+    </tr>
+    <tr>
+        <td>UserId</td>
+        <td>UUID</td>
+        <td>FK → Users</td>
+        <td>Abone kullanıcı</td>
+    </tr>
+    <tr>
+        <td>PlanType</td>
+        <td>VARCHAR(20)</td>
+        <td>NOT NULL</td>
+        <td>Free, Premium, ProCoach</td>
+    </tr>
+    <tr>
+        <td>Status</td>
+        <td>VARCHAR(20)</td>
+        <td>NOT NULL</td>
+        <td>Active, Cancelled, Expired</td>
+    </tr>
+    <tr>
+        <td>StartDate</td>
+        <td>TIMESTAMP</td>
+        <td>NOT NULL</td>
+        <td>Başlangıç</td>
+    </tr>
+    <tr>
+        <td>EndDate</td>
+        <td>TIMESTAMP</td>
+        <td></td>
+        <td>Bitiş (NULL = süresiz)</td>
+    </tr>
+    <tr>
+        <td>MonthlyAnalysisLimit</td>
+        <td>INTEGER</td>
+        <td>NOT NULL</td>
+        <td>3, -1 (sınırsız), 50+</td>
+    </tr>
+    <tr>
+        <td>MaxVideoDuration</td>
+        <td>INTEGER</td>
+        <td>NOT NULL</td>
+        <td>300, 900, 1800 saniye</td>
+    </tr>
+    <tr>
+        <td>Price</td>
+        <td>DECIMAL(10,2)</td>
+        <td>NOT NULL</td>
+        <td>USD cinsinden aylık ücret</td>
+    </tr>
+</table>
+</div><h2>12.2 İndeksler ve Performans Optimizasyonu</h2><p>Users.Email: UNIQUE INDEX (giriş performansı)</p><p>Videos.UserId + Status: COMPOSITE INDEX (kullanıcı videoları listeleme)</p><p>AnalysisResults.VideoId: INDEX (video-analiz join)</p><p>AnalysisResults.CreatedAt: INDEX (trend analizi, son analizler)</p><p>AnalysisResults.UserId (via VideoId JOIN): GIN INDEX on JSONB fields (error search)</p><p>Subscriptions.UserId + Status: COMPOSITE INDEX (aktif abonelik kontrolü)</p><h2>12.3 Redis Cache Stratejisi</h2><p>Session Store: JWT refresh token'ları, TTL: 7 gün</p><p>Rate Limiting: Her IP için request count, TTL: 1 dakika</p><p>Video Queue Status: Processing durumları, TTL: 1 saat</p><p>Fight IQ Leaderboard: Haftalık skorlar, TTL: 24 saat</p><p>AI Coach Response Cache: Aynı skor kombinasyonları için cache, TTL: 1 saat</p><p>Popular Videos: Trending videolar, TTL: 30 dakika</p></div><div class="section" id="s26"><h1>13 SaaS GELİR MODELİ VE FİYATLANDIRMA</h1><h2>13.1 Abonelik Planları</h2><p>FightCoach AI, freemium model ile 3 abonelik seviyesi sunar:</p><div class="table-wrapper"><table>
+    <tr>
+        <th><strong>Özellik</strong></th>
+        <th><strong>Free</strong></th>
+        <th><strong>Premium</strong></th>
+        <th><strong>Pro Coach</strong></th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>Aylık Ücret</td>
+        <td>$0</td>
+        <td>$19.99</td>
+        <td>$49.99</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Yıllık Ücret</td>
+        <td>$0</td>
+        <td>$199.99 (%17 indirim)</td>
+        <td>$499.99 (%17 indirim)</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Aylık Analiz Limiti</td>
+        <td>3 video</td>
+        <td>Sınırsız</td>
+        <td>Sınırsız (çoklu sporcu)</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Maksimum Video Süresi</td>
+        <td>5 dakika</td>
+        <td>15 dakika</td>
+        <td>30 dakika</td>
+        <td></td>
+    </tr>
+</table>
+</div><div class="table-wrapper"><table>
+    <tr>
+        <th><strong>Özellik</strong></th>
+        <th><strong>Free</strong></th>
+        <th><strong>Premium</strong></th>
+        <th><strong>Pro Coach</strong></th>
+    </tr>
+    <tr>
+        <td>Fight IQ Skoru</td>
+        <td>✓</td>
+        <td>✓</td>
+        <td>✓</td>
+    </tr>
+    <tr>
+        <td>Temel Hata Analizi</td>
+        <td>✓</td>
+        <td>✓</td>
+        <td>✓</td>
+    </tr>
+    <tr>
+        <td>Gelişim Takibi (Grafik)</td>
+        <td>Son 1 ay</td>
+        <td>Sınırsız</td>
+        <td>Sınırsız</td>
+    </tr>
+    <tr>
+        <td>AI Coach Geri Bildirimi</td>
+        <td>Temel</td>
+        <td>Detaylı</td>
+        <td>Detaylı + PDF</td>
+    </tr>
+    <tr>
+        <td>Kombinasyon Analizi</td>
+        <td>✗</td>
+        <td>✓</td>
+        <td>✓</td>
+    </tr>
+    <tr>
+        <td>Karşılaştırmalı Analiz</td>
+        <td>✗</td>
+        <td>✓</td>
+        <td>✓</td>
+    </tr>
+    <tr>
+        <td>Sosyal Medya Paylaşımı</td>
+        <td>✓</td>
+        <td>✓</td>
+        <td>✓</td>
+    </tr>
+    <tr>
+        <td>PDF Rapor</td>
+        <td>✗</td>
+        <td>✓</td>
+        <td>✓</td>
+    </tr>
+    <tr>
+        <td>Çoklu Sporcu Yönetimi</td>
+        <td>✗</td>
+        <td>✗</td>
+        <td>✓ (50 sporcu)</td>
+    </tr>
+    <tr>
+        <td>Salon Paneli</td>
+        <td>✗</td>
+        <td>✗</td>
+        <td>✓</td>
+    </tr>
+    <tr>
+        <td>Toplu Raporlama</td>
+        <td>✗</td>
+        <td>✗</td>
+        <td>✓</td>
+    </tr>
+    <tr>
+        <td>Özel Markalama</td>
+        <td>✗</td>
+        <td>✗</td>
+        <td>✓</td>
+    </tr>
+    <tr>
+        <td>API Erişimi</td>
+        <td>✗</td>
+        <td>✗</td>
+        <td>✓</td>
+    </tr>
+    <tr>
+        <td>Öncelikli İşlem Kuyruğu</td>
+        <td>✗</td>
+        <td>✓</td>
+        <td>✓</td>
+    </tr>
+</table>
+</div><h2>13.2 Ek Gelir Kaynakları</h2><ul><li><strong> Ek Analiz Paketleri (Free Kullanıcılar): </strong>5 analiz/$4.99, 10 analiz/$8.99 - Tek seferlik satın alma</li><li><strong> Enterprise Lisansı: </strong>Büyük salon zincirleri için özel fiyatlandırma. $299/ay (100+ sporcu)</li><li><strong> White-Label Çözüm: </strong>Federasyonlar için kendi markalarıyla kullanma hakkı. $999/ay + kurulum ücreti</li><li><strong> Sponsorlu İçerik: </strong>Eldiven, şort, ekipman markalarının platformda yer alması</li><li><strong> Affiliate Programı: </strong>Antrenörlerin öğrencilerini davet etmesi karşılığında %30 komisyon</li></ul><h2>13.3 Ödeme Altyapısı</h2><p>Ödeme Sağlayıcı: Stripe (küresel) + Iyzico (Türkiye) + PayPal</p><p>Abonelik Yönetimi: Stripe Billing / Chargebee</p><p>Fatura: Otomatik PDF fatura oluşturma (her ay/yıl)</p><p>İptal Politikası: Herhangi bir zamanda iptal, kalan süre boyunca erişim devam eder</p><p>Para İadesi: 7 gün içinde tam para iadesi (no questions asked)</p><p>Promosyon Kodları: İlk ay %50 indirim, referans kodları, salon ortaklıkları</p></div><div class="section" id="s27"><h1>14 MARKETING VE BÜYÜME STRATEJİSİ</h1><h2>14.1 Dijital Marketing Kanalları</h2><ul><li><strong> TikTok: </strong>Ana kanal. Kısa format (15-60 sn) AI analiz videoları. 'Before/After' formatı. Hashtag stratejisi: #FightIQ #AIBoxing #BoxingAnalysis. Influencer işbirlikleri: 50K-500K takipçili dövüş sporları içerik üreticileri.</li><li><strong> Instagram: </strong>Reels (TikTok benzeri kısa videolar), Carousel posts (Fight IQ Card serileri), Stories (günlük skor paylaşımları). IGTV: Uzun form analiz videoları. Influencer: Boksörler, antrenörler, fitness modelleri.</li><li><strong> YouTube Shorts: </strong>AI analiz videoları, 'How FightCoach AI Works' serisi, sporcu röportajları. SEO optimizasyonu: 'AI boxing analysis', 'boxing technique review'.</li><li><strong> Twitter/X: </strong>Fight IQ skorları, teknik ipuçları, sektör haberleri, topluluk etkileşimi. Thread formatında derinlemesine analizler.</li><li><strong> Reddit: </strong>r/amateur_boxing, r/MMA, r/boxing subreddit'lerinde organik paylaşım, AMA (Ask Me Anything) etkinlikleri.</li><li><strong> Discord: </strong>Topluluk sunucusu. Sporcuların skorlarını paylaşması, challenge'lar, antrenörlerin önerileri.</li></ul><h2>14.2 Spor Salonu Ortaklıkları (B2B)</h2><ul><li><strong> İlk 50 Salona Ücretsiz Kullanım: </strong>V1 lansmanında ilk 50 salon 3 ay ücretsiz Pro Coach kullanır. Karşılığında: Salon içi poster, sosyal medya paylaşımı, üye eğitimi.</li><li><strong> Salon Paneli Demo: </strong>Salon sahiplerine ücretsiz demo hesabı verilir. 2 haftalık deneme süresi sonrası dönüşüm hedefi: %40.</li><li><strong> Eğitim ve Destek: </strong>Salon personeline platform kullanımı eğitimi. Webinar'lar, kullanım kılavuzları, 7/24 destek hattı.</li><li><strong> Revenue Share Modeli: </strong>Salon, üyelerine FightCoach AI'yi ek ücretle sunar. Gelir paylaşımı: %70 salon, %30 FightCoach AI.</li></ul><h2>14.3 İçerik Stratejisi</h2><ul><li><strong> Eğitim İçeriği: </strong>'Nasıl daha iyi jab atılır?', 'Gard düşürme hataları', 'Footwork drill'leri' - Haftada 3 video.</li><li><strong> Kullanıcı Hikayeleri: </strong>Gerçek kullanıcıların gelişim hikayeleri. Before/After Fight IQ skorları. Video testimonial'lar.</li><li><strong> Teknik Analiz: </strong>Ünlü boksörlerin (Canelo, Tyson Fury, etc.) teknik analizi AI ile. Viral potansiyel yüksek.</li><li><strong> Challenge'lar: </strong>'30 Gün Fight IQ Challenge' - Her gün video yükle, skorunu takip et, ödül kazan.</li><li><strong> Canlı Etkinlikler: </strong>Instagram Live: Antrenörlerle Q&amp;A, AI analiz demo'ları, yeni özellik tanıtımları.</li></ul></div><div class="section" id="s28"><h1>15 VIRAL BÜYÜME MEKANİZMALARI</h1><h2>15.1 Fight IQ Card</h2><p>Her analiz sonunda otomatik olarak oluşturulan, sosyal medyada paylaşılabilir görsel karttır. Strava'nın 'Activity Card'ından esinlenilmiştir.</p><ul><li><strong> Boyut: </strong>1080x1920px (Instagram Story formatı) + 1200x630px (Twitter/LinkedIn)</li><li><strong> Renk Şeması: </strong>Skor aralığına göre dinamik: Kırmızı (0-39), Turuncu (40-59), Sarı (60-74), Yeşil (75-89), Mavi (90-100)</li><li><strong> İçerik: </strong>Fight IQ skoru (büyük), 4 alt skor (radar chart), sporcu adı, tarih, spor disiplini, FightCoach AI logosu</li><li><strong> QR Kod: </strong>Kartın altında QR kod → Doğrudan profil/analiz sayfasına yönlendirme</li><li><strong> Watermark: </strong>Hafif 'Powered by FightCoach AI' watermark. Premium kullanıcılar watermark kaldırabilir.</li><li><strong> Format: </strong>PNG (yüksek kalite) + MP4 (animasyonlu versiyon, Premium)</li></ul><h2>15.2 Paylaşım Akışı</h2></div><div class="section" id="s29"><h1>1 Analiz Tamamlanır: Kullanıcı sonuçları görür</h1></div><div class="section" id="s30"><h1>2 Kart Oluşturma: Sistem otomatik olarak 3 format (Story, Post, Twitter) kart oluşturur</h1></div><div class="section" id="s31"><h1>3 Önizleme: Kullanıcı kartı önizler, isteğe bağlı olarak not ekler ('Bu hafta %5 gelişim!')</h1></div><div class="section" id="s32"><h1>4 Platform Seçimi: Instagram, TikTok, Twitter, WhatsApp, kopyala bağlantı</h1></div><div class="section" id="s33"><h1>5 Paylaşım: Native share API ile doğrudan paylaşım veya indirme</h1><p><strong>6. Referans Takibi: </strong>Paylaşılan her kartta unique referral code. Yeni kullanıcı kaydı → 1 ücretsiz analiz.</p><h2>15.3 Viral Döngü Mekanizmaları</h2><ul><li><strong> Referans Programı: </strong>Her yeni davet edilen kullanıcı için davet edene +1 analiz. Davet edilen kullanıcıya da +1 analiz.</li><li><strong> Leaderboard: </strong>Haftalık/aylık Fight IQ sıralaması. Top 10 sosyal medyada paylaşılır. Rekabetçi motivasyon.</li><li><strong> Challenge Sistemi: </strong>'Bu hafta en çok gelişen sporcu' challenge'ı. Katılımcılar video paylaşır, en yüksek gelişim kazanır.</li><li><strong> Streak Sistemi: </strong>Ardışık haftalık video yükleme streak'i. 4 hafta streak = rozet + sosyal medya badge.</li><li><strong> Antrenör Onayı: </strong>Antrenörler öğrencilerinin skorlarını onaylar ve yorumlar. Onaylı skorlar daha fazla görünürlük kazanır.</li><li><strong> Embed Widget: </strong>Sporcular kendi web sitelerine/bloglarına Fight IQ Card embed edebilir. Backlink ve görünürlük.</li></ul></div><div class="section" id="s34"><h1>16 RISK ANALİZİ VE MİTIGASYON</h1><h2>16.1 Teknik Riskler</h2><ul><li><strong> Düşük Kaliteli Videolar:
+</strong>Risk: 720p altı, bulanık, karanlık videolarda pose detection doğruluğu düşer.
+Mitigasyon: Upload öncesi kalite kontrolü (blur detection, lighting analysis). Kullanıcıya otomatik uyarı ve çekim önerileri. Düşük kaliteli videolarda 'Analiz güvenilirliği: Orta' uyarısı.</li><li><strong> Kötü Kamera Açıları:
+</strong>Risk: Arkadan çekim, çok yüksek/çok alçak açılarda landmark görünürlüğü azalır.
+Mitigasyon: Kamera açısı tespiti (perspective analysis). Kullanıcıya ideal açı kılavuzu (45 derece yan açı). Açı tespiti başarısız olursa analiz reddedilir ve yönlendirme yapılır.</li><li><strong> Farklı Spor Disiplinleri:
+</strong>Risk: Boks, kick boks, muay thai, MMA farklı teknikler ve pozisyonlar kullanır. Tek model hepsini doğru analiz edemeyebilir.
+Mitigasyon: Disiplin bazlı model fine-tuning. Kullanıcı profilinde disiplin seçimi zorunlu. V1'de boks odaklı, V2'de diğer disiplinler eklenir.</li><li><strong> Yanlış Analizler (False Positives/Negatives):
+</strong>Risk: AI hatalı teknik tespiti yapabilir (örn. normal bir hareketi hata olarak işaretler). Kullanıcı güveni sarsılır.
+Mitigasyon: Çoklu model doğrulaması (ensemble). İnsan geri bildirim sistemi (thumbs up/down). Confidence threshold: 0.75 altındaki tespitler 'şüpheli' olarak işaretlenir.</li><li><strong> Gerçek Zamanlı Analiz Gecikmesi (V3):
+</strong>Risk: Canlı kamera analizi yüksek latency gösterebilir.
+Mitigasyon: Edge computing (model quantization, TensorRT). 5 FPS minimum hedef. V3'te önce offline analiz stabil olmadan canlı özellik açılmaz.</li></ul><h2>16.2 İş ve Pazar Riskleri</h2><ul><li><strong> Düşük Kullanıcı Edinimi:
+</strong>Risk: Dövüş sporları niş bir pazar, kullanıcı edinimi maliyeti (CAC) yüksek olabilir.
+Mitigasyon: Viral mekanizmalar (Fight IQ Card), influencer işbirlikleri, salon ortaklıkları. Freemium model ile düşük bariyerli giriş.</li><li><strong> Yüksek Churn Oranı:
+</strong>Risk: Sporcular sezonluk çalışır, antrenman düzenleri değişken. Abonelik iptalleri yüksek olabilir.
+Mitigasyon: Aylık planlarda esneklik (pause özelliği). Sezonluk kampanyalar. Antrenör-salon bağlılığı ile kullanıcı tutma.</li><li><strong> Rakip Girişi:
+</strong>Risk: Büyük fitness şirketleri (Nike, Under Armour, Peloton) benzer ürün çıkarabilir.
+Mitigasyon: Dövüş sporlarına özgü derin uzmanlık. Topluluk ve sosyal özellikler. Hızlı iterasyon ve kullanıcı geri bildirim döngüsü.</li><li><strong> Regülasyon ve Gizlilik:
+</strong>Risk: Biyometrik veri (pose landmark'ları) GDPR/CCPA kapsamında özel veri olabilir.
+Mitigasyon: Açık gizlilik politikası. Veri anonimizasyonu. AB kullanıcıları için GDPR uyumu. Veri saklama süresi: 1 yıl (Premium), 3 ay (Free).</li></ul><h2>16.3 İnsan Geri Bildirim Sistemi</h2><p>AI analizlerinin kalitesini sürekli iyileştirmek için kullanıcı geri bildirimi kritiktir:</p><p>Thumbs Up/Down: Her hata tespiti için kullanıcı doğru/yanlış oylayabilir.</p><p>Correction Submission: Kullanıcı yanlış tespiti düzeltebilir (örn. 'Bu slip değil, weave').</p><p>Expert Review: Onaylı antrenörler AI tespitlerini doğrulayabilir. Doğrulanan tespitler 'gold standard' olarak işaretlenir.</p><p>Reward System: Geri bildirim veren kullanıcılara +1 analiz kredisi.</p><p>Model Retraining: Aylık toplu geri bildirim verisi ile model fine-tuning.</p></div><div class="section" id="s35"><h1>17 YOL HARİTASI VE MVP TANIMI</h1><h2>17.1 MVP (Minimum Viable Product) Tanımı</h2><p>MVP, temel değer önerisini test eden, hızlı pazar geri bildirimi alabilen minimum özellik setidir. Süre: 3-4 ay. Hedef: 100 aktif kullanıcı, %20 haftalık retention.</p><ul><li><strong> Video Yükleme: </strong>MP4 upload, 720p+ destek, max 3 dakika, max 100MB</li><li><strong> Pose Detection: </strong>MediaPipe BlazePose (Full), tek kişi, boks odaklı</li><li><strong> Fight IQ Skoru: </strong>4 alt skor (Guard, Defense, Footwork, Attack), basit ağırlıklı ortalama</li><li><strong> Temel Hata Analizi: </strong>5 temel hata türü: gard düşük, çene açık, ayak çapraz, jab geri dönüş eksik, denge bozuk</li><li><strong> Dashboard: </strong>Son 5 analiz listesi, Fight IQ trend çizgi grafiği</li><li><strong> Sosyal Paylaşım: </strong>Fight IQ Card (PNG), Instagram/Twitter paylaşım</li><li><strong> Abonelik: </strong>Free (3 analiz/ay) + Premium ($19.99, sınırsız)</li></ul><h2>17.2 V1 → V4 Yol Haritası</h2><p><strong>V1 - MVP (Ay 0-4):
+</strong>Video analizi, Fight IQ, temel AI Coach, Free/Premium abonelik, boks odaklı.
+Hedef: 100 kullanıcı, %20 retention, $0 gelir (ücretsiz odaklı).</p><p><strong>V2 - Kombinasyon ve Rakip (Ay 4-8):
+</strong>Kombinasyon tanıma, rakip analizi (sparring), kick boks/muay thai desteği, AI Coach detaylı.
+Hedef: 1,000 kullanıcı, %25 retention, $2,000 MRR.</p><p><strong>V3 - Gerçek Zamanlı (Ay 8-14):
+</strong>Canlı kamera analizi, edge computing, mobil uygulama (iOS/Android), gerçek zamanlı geri bildirim.
+Hedef: 5,000 kullanıcı, %30 retention, $15,000 MRR.</p><p><strong>V4 - Kişisel AI Antrenör (Ay 14-24):
+</strong>Sesli geri bildirim, antrenman planı oluşturma, beslenme önerileri, wearable entegrasyonu (Apple Watch, Garmin).
+Hedef: 20,000 kullanıcı, %35 retention, $75,000 MRR.</p><h2>17.3 MVP Teknik Stack</h2><p>Frontend: Next.js 14 + Tailwind CSS (Vercel deployment)</p><p>Backend: ASP.NET Core 8 + PostgreSQL (AWS RDS t2.micro)</p><p>AI: Python FastAPI + MediaPipe + PyTorch (AWS EC2 g4dn.xlarge - GPU instance)</p><p>Storage: AWS S3 (video files) + CloudFront (CDN)</p><p>Queue: AWS SQS (simple queue, no RabbitMQ yet)</p><p>Auth: Auth0 / Clerk (hızlı entegrasyon, kendi auth sonrası)</p><p>Payment: Stripe (test mode, production sonrası)</p></div><div class="section" id="s36"><h1>18 MALİ PROJEKSİYONLAR</h1><h2>18.1 Gider Projeksiyonu (Aylık)</h2><div class="table-wrapper"><table>
+    <tr>
+        <th><strong>Kalem</strong></th>
+        <th><strong>MVP (Ay 0-4)</strong></th>
+        <th><strong>V2 (Ay 4-8)</strong></th>
+        <th><strong>V3+ (Ay 8+)</strong></th>
+    </tr>
+    <tr>
+        <td>Bulut Altyapı (AWS)</td>
+        <td>$500</td>
+        <td>$1,500</td>
+        <td>$5,000</td>
+    </tr>
+    <tr>
+        <td>AI GPU İşlem (EC2 g4dn)</td>
+        <td>$400</td>
+        <td>$1,200</td>
+        <td>$3,500</td>
+    </tr>
+    <tr>
+        <td>Veritabanı (RDS + Redis)</td>
+        <td>$100</td>
+        <td>$300</td>
+        <td>$800</td>
+    </tr>
+    <tr>
+        <td>Depolama (S3 + CDN)</td>
+        <td>$50</td>
+        <td>$200</td>
+        <td>$600</td>
+    </tr>
+    <tr>
+        <td>SaaS Araçları (Stripe, Auth0, etc.)</td>
+        <td>$200</td>
+        <td>$400</td>
+        <td>$800</td>
+    </tr>
+    <tr>
+        <td>Pazarlama</td>
+        <td>$500</td>
+        <td>$2,000</td>
+        <td>$8,000</td>
+    </tr>
+    <tr>
+        <td>Personel (2 geliştirici)</td>
+        <td>$4,000</td>
+        <td>$6,000</td>
+        <td>$12,000</td>
+    </tr>
+    <tr>
+        <td><strong>TOPLAM</strong></td>
+        <td><strong>$5,750</strong></td>
+        <td><strong>$11,600</strong></td>
+        <td><strong>$30,700</strong></td>
+    </tr>
+</table>
+</div><h2>18.2 Gelir Projeksiyonu</h2><div class="table-wrapper"><table>
+    <tr>
+        <th><strong>Dönem</strong></th>
+        <th><strong>Free Kullanıcı</strong></th>
+        <th><strong>Premium</strong></th>
+        <th><strong>Pro Coach</strong></th>
+        <th><strong>MRR</strong></th>
+    </tr>
+    <tr>
+        <td>MVP (Ay 4)</td>
+        <td>500</td>
+        <td>20</td>
+        <td>0</td>
+        <td>$400</td>
+    </tr>
+    <tr>
+        <td>V2 (Ay 8)</td>
+        <td>3,000</td>
+        <td>150</td>
+        <td>10</td>
+        <td>$3,500</td>
+    </tr>
+    <tr>
+        <td>V3 (Ay 14)</td>
+        <td>12,000</td>
+        <td>800</td>
+        <td>50</td>
+        <td>$18,500</td>
+    </tr>
+    <tr>
+        <td>V4 (Ay 24)</td>
+        <td>40,000</td>
+        <td>3,500</td>
+        <td>200</td>
+        <td>$80,000</td>
+    </tr>
+    <tr>
+        <td>Yıl 3 Hedef</td>
+        <td>150,000</td>
+        <td>15,000</td>
+        <td>800</td>
+        <td>$340,000</td>
+    </tr>
+</table>
+</div><h2>18.3 Birim Ekonomisi (Unit Economics)</h2><ul><li><strong> Customer Acquisition Cost (CAC): </strong>$15-25 (dijital pazarlama + influencer)</li><li><strong> Average Revenue Per User (ARPU): </strong>$12/ay (Premium ağırlıklı)</li><li><strong> Lifetime Value (LTV): </strong>$144 (12 aylik ortalama retention)</li><li><strong> LTV/CAC Ratio: </strong>5.8-9.6 (sağlıklı SaaS için &gt;3 hedefi)</li><li><strong> Gross Margin: </strong>~75% (bulut maliyetleri düştükçe artar)</li><li><strong> Payback Period: </strong>2-3 ay (CAC'in geri ödenme süresi)</li></ul></div><div class="section" id="s37"><h1>19 EKİP VE ORGANİZASYON</h1><h2>19.1 MVP Ekibi (Ay 0-8)</h2><div class="table-wrapper"><table>
+    <tr>
+        <th><strong>Rol</strong></th>
+        <th><strong>Sorumluluk</strong></th>
+        <th><strong>Tip</strong></th>
+        <th><strong>Yüzde</strong></th>
+    </tr>
+    <tr>
+        <td>Full-Stack Developer</td>
+        <td>Frontend (Next.js) + Backend (ASP.NET Core)</td>
+        <td>Core</td>
+        <td>%40</td>
+    </tr>
+    <tr>
+        <td>AI/ML Engineer</td>
+        <td>Pose detection, action recognition, model training</td>
+        <td>Core</td>
+        <td>%35</td>
+    </tr>
+    <tr>
+        <td>Product Manager</td>
+        <td>Roadmap, kullanıcı araştırması, pazarlama</td>
+        <td>Core</td>
+        <td>%15</td>
+    </tr>
+    <tr>
+        <td>Dövüş Sporları Uzmanı</td>
+        <td>Teknik doğrulama, veri etiketleme, antrenör ilişkileri</td>
+        <td>Advisor</td>
+        <td>%5</td>
+    </tr>
+    <tr>
+        <td>DevOps (Part-time)</td>
+        <td>Deployment, CI/CD, monitoring</td>
+        <td>Contractor</td>
+        <td>%5</td>
+    </tr>
+</table>
+</div><h2>19.2 Gelecekteki Ekip Genişlemesi (V3+)</h2><ul><li><strong> Mobile Developer (2 kişi): </strong>iOS (Swift) ve Android (Kotlin) native uygulamalar</li><li><strong> AI Research Scientist: </strong>Yeni model araştırması, paper implementation, model optimization</li><li><strong> Growth Hacker: </strong>Viral mekanizmalar, A/B testing, conversion optimization</li><li><strong> Customer Success Manager: </strong>Salon ortaklıkları, antrenör onboarding, destek</li><li><strong> Data Engineer: </strong>Pipeline optimization, big data processing, analytics</li><li><strong> UI/UX Designer: </strong>Mobil ve web arayüz tasarımı, kullanıcı testleri</li></ul><h2>19.3 Çalışma Modeli</h2><p>Remote-first: Tüm ekip uzaktan çalışır. Haftada 1-2 gün opsiyonel ofis günü.</p><p>Agile: 2 haftalık sprint'ler, daily standup (15 dk), sprint review + retrospective.</p><p>Araçlar: Jira (proje), Slack (iletişim), Figma (tasarım), Notion (dokümantasyon), GitHub (kod).</p><p>Kültür: 'Data-driven decisions', 'User-first', 'Ship fast, iterate faster'</p><p>Eşitlik: Her çalışan opsiyon havuzundan pay alır (stock options).</p></div><div class="section" id="s38"><h1>20 EKLER VE REFERANSLAR</h1><h2>20.1 Teknik Referanslar</h2><p>MediaPipe BlazePose: https://developers.google.com/mediapipe/solutions/vision/pose_landmarker</p><p>YOLOv8 Pose: https://docs.ultralytics.com/tasks/pose/</p><p>PyTorch: https://pytorch.org/</p><p>FastAPI: https://fastapi.tiangolo.com/</p><p>ASP.NET Core 8: https://learn.microsoft.com/en-us/aspnet/core/</p><p>Next.js 14: https://nextjs.org/</p><p>Tailwind CSS: https://tailwindcss.com/</p><p>PostgreSQL 15: https://www.postgresql.org/</p><p>OpenCV: https://opencv.org/</p><p>TensorRT: https://developer.nvidia.com/tensorrt</p><h2>20.2 Akademik Referanslar</h2><p>Bazarevsky, V., et al. (2020). BlazePose: On-device Real-time Body Pose Tracking. arXiv:2006.10204</p><p>Cao, Z., et al. (2019). OpenPose: Realtime Multi-Person 2D Pose Estimation. IEEE TPAMI.</p><p>Jocher, G., et al. (2023). Ultralytics YOLOv8. https://github.com/ultralytics/ultralytics</p><p>Hochreiter, S., &amp; Schmidhuber, J. (1997). Long Short-Term Memory. Neural Computation, 9(8), 1735-1780.</p><p>Vaswani, A., et al. (2017). Attention Is All You Need. NeurIPS 2017.</p><p>Karpathy, A. (2015). Visualizing and Understanding Recurrent Networks. ICLR 2015 Workshop.</p><h2>20.3 Sektör Referansları</h2><p>Strava: https://www.strava.com/ - Konumlandırma referansı</p><p>PunchLab: https://punchlab.co/ - Donanım tabanlı rakip</p><p>FightCamp: https://joinfightcamp.com/ - Canlı ders rakibi</p><p>Coach's Eye: https://www.coachseye.com/ - Genel video analiz</p><p>Whoop: https://www.whoop.com/ - Wearable fitness tracking</p><p>Catapult Sports: https://www.catapultsports.com/ - Profesyonel spor analitiği</p><h2>20.4 Ek A: API Endpoint Özeti</h2><div class="table-wrapper"><table>
+    <tr>
+        <th><strong>Method</strong></th>
+        <th><strong>Endpoint</strong></th>
+        <th><strong>Açıklama</strong></th>
+        <th><strong>Auth</strong></th>
+    </tr>
+    <tr>
+        <td>POST</td>
+        <td>/api/auth/register</td>
+        <td>Kullanıcı kaydı</td>
+        <td>Public</td>
+    </tr>
+    <tr>
+        <td>POST</td>
+        <td>/api/auth/login</td>
+        <td>Giriş, JWT token</td>
+        <td>Public</td>
+    </tr>
+    <tr>
+        <td>POST</td>
+        <td>/api/videos/upload</td>
+        <td>Video yükleme (presigned URL)</td>
+        <td>JWT</td>
+    </tr>
+    <tr>
+        <td>GET</td>
+        <td>/api/videos/{id}</td>
+        <td>Video detayları ve durum</td>
+        <td>JWT</td>
+    </tr>
+    <tr>
+        <td>GET</td>
+        <td>/api/analysis/{videoId}</td>
+        <td>Analiz sonuçları</td>
+        <td>JWT</td>
+    </tr>
+    <tr>
+        <td>GET</td>
+        <td>/api/fightiq/history</td>
+        <td>Fight IQ geçmişi</td>
+        <td>JWT</td>
+    </tr>
+    <tr>
+        <td>GET</td>
+        <td>/api/fightiq/leaderboard</td>
+        <td>Haftalık sıralama</td>
+        <td>JWT</td>
+    </tr>
+    <tr>
+        <td>POST</td>
+        <td>/api/feedback</td>
+        <td>Analiz geri bildirimi</td>
+        <td>JWT</td>
+    </tr>
+</table>
+</div><h2>20.5 Ek B: Video Kalite Kontrol Kriterleri</h2><div class="table-wrapper"><table>
+    <tr>
+        <th><strong>Kriter</strong></th>
+        <th><strong>Minimum</strong></th>
+        <th><strong>İdeal</strong></th>
+        <th><strong>Kontrol Yöntemi</strong></th>
+    </tr>
+    <tr>
+        <td>Çözünürlük</td>
+        <td>720p (1280x720)</td>
+        <td>1080p (1920x1080)</td>
+        <td>FFmpeg probe</td>
+    </tr>
+    <tr>
+        <td>FPS</td>
+        <td>24</td>
+        <td>30</td>
+        <td>FFmpeg probe</td>
+    </tr>
+    <tr>
+        <td>Blur (Laplacian)</td>
+        <td>&gt;50 variance</td>
+        <td>&gt;100 variance</td>
+        <td>OpenCV Laplacian</td>
+    </tr>
+    <tr>
+        <td>Aydınlatma</td>
+        <td>&gt;30 lux (yaklaşık)</td>
+        <td>&gt;100 lux</td>
+        <td>Histogram analysis</td>
+    </tr>
+    <tr>
+        <td>Kontrast</td>
+        <td>&gt;0.3</td>
+        <td>&gt;0.5</td>
+        <td>Histogram std dev</td>
+    </tr>
+    <tr>
+        <td>Pose Visibility</td>
+        <td>&gt;60% landmarks visible</td>
+        <td>&gt;80%</td>
+        <td>MediaPipe confidence</td>
+    </tr>
+</table>
+</div><p><strong>FightCoach AI</strong></p><p>Teknik ve İş Analizi Dokümanı v2.0</p><p>Haziran 2026</p></div><a href="#top" class="back-to-top">↑</a><div class="footer"><p><strong style="color:var(--primary);font-size:1.2rem;">FightCoach AI</strong></p><p>Teknik ve İş Analizi Dokümanı v2.0</p><p style="margin-top:10px;color:#999;">Haziran 2026 | Yapay Zeka Destekli Dövüş Sporları Analiz Platformu</p></div></div></body></html>

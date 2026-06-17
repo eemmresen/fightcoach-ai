@@ -1,0 +1,6 @@
+@FightCoachAI.WebAPI_HostAddress = http://localhost:5263
+
+GET {{FightCoachAI.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

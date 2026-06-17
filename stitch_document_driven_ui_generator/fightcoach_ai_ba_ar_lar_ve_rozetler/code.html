@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Strike Lab - Achievements</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Montserrat:wght@600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#2d3449",
+                        "secondary": "#9ecaff",
+                        "on-secondary-fixed-variant": "#00497d",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#8c9199",
+                        "on-secondary-fixed": "#001d36",
+                        "on-tertiary": "#640b11",
+                        "primary-fixed-dim": "#a0cafc",
+                        "surface": "#0b1326",
+                        "surface-container-low": "#131b2e",
+                        "surface-container": "#171f33",
+                        "inverse-primary": "#35618d",
+                        "on-primary-container": "#95bff1",
+                        "on-secondary-container": "#b2d4ff",
+                        "on-primary": "#003257",
+                        "tertiary": "#ffb3ae",
+                        "surface-bright": "#31394d",
+                        "primary": "#a0cafc",
+                        "primary-container": "#1f4e79",
+                        "secondary-fixed": "#d1e4ff",
+                        "on-surface-variant": "#c2c7d0",
+                        "inverse-on-surface": "#283044",
+                        "surface-tint": "#a0cafc",
+                        "secondary-container": "#005c9c",
+                        "tertiary-fixed-dim": "#ffb3ae",
+                        "on-error": "#690005",
+                        "tertiary-container": "#8a2828",
+                        "surface-container-highest": "#2d3449",
+                        "on-primary-fixed-variant": "#184974",
+                        "success-green": "#28a745",
+                        "text-primary": "#f8fafc",
+                        "surface-dim": "#0b1326",
+                        "text-secondary": "#94a3b8",
+                        "tertiary-fixed": "#ffdad7",
+                        "on-secondary": "#003258",
+                        "on-primary-fixed": "#001d35",
+                        "border-muted": "#334155",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#842324",
+                        "on-tertiary-fixed": "#410005",
+                        "primary-fixed": "#d1e4ff",
+                        "warning-yellow": "#ffc107",
+                        "background": "#0b1326",
+                        "secondary-fixed-dim": "#9ecaff",
+                        "on-surface": "#dae2fd",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#060e20",
+                        "surface-container-high": "#222a3d",
+                        "surface-slate": "#1e293b",
+                        "outline-variant": "#42474f",
+                        "on-background": "#dae2fd",
+                        "inverse-surface": "#dae2fd",
+                        "on-tertiary-container": "#ffa39e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "0.5rem",
+                        "stack-md": "1.5rem",
+                        "gutter": "1.5rem",
+                        "margin-mobile": "1rem",
+                        "stack-lg": "3rem",
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Montserrat"],
+                        "data-num": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "display-lg-mobile": ["Montserrat"],
+                        "label-md": ["Inter"],
+                        "headline-xl": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "data-num": ["28px", { "lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.1", "fontWeight": "900" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "display-lg": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "900" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.text-primary'); }
+        .glass-panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid theme('colors.border-muted'); }
+        .hexagon {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased min-h-screen flex flex-col font-body-md bg-background text-text-primary pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="docked full-width top-0 sticky backdrop-blur-md border-b border-border-muted flex justify-between items-center px-margin-mobile h-16 w-full z-50 bg-surface/70 dark:bg-surface/70">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary dark:text-secondary font-variation-settings: 'FILL' 1;" data-icon="analytics">analytics</span>
+<span class="font-display-lg-mobile text-headline-lg-mobile italic tracking-tighter text-secondary dark:text-secondary md:font-display-lg md:text-display-lg">STRIKE_LAB</span>
+</div>
+<button class="font-label-md text-label-md text-secondary dark:text-secondary hover:text-primary dark:hover:text-primary transition-colors active:scale-95 duration-100 flex items-center gap-2">
+<span>UPLOAD</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-gutter py-stack-lg flex flex-col gap-stack-lg">
+<!-- Hero: Rank & XP -->
+<section class="glass-panel rounded-xl p-6 md:p-8 relative overflow-hidden flex flex-col md:flex-row items-center gap-8 justify-between">
+<div class="absolute inset-0 bg-gradient-to-r from-secondary-container/20 to-transparent pointer-events-none"></div>
+<div class="flex flex-col items-center md:items-start gap-2 z-10">
+<span class="font-label-md text-label-md text-secondary tracking-widest uppercase">Current Rank</span>
+<h1 class="font-headline-xl text-headline-xl text-text-primary flex items-center gap-3">
+<span class="w-4 h-12 bg-blue-500 rounded-full inline-block shadow-[0_0_15px_rgba(59,130,246,0.5)]"></span>
+                    Blue Belt Technician
+                </h1>
+<p class="font-body-md text-body-md text-text-secondary mt-2">Next rank at 15,000 XP</p>
+</div>
+<div class="flex flex-col items-center justify-center relative z-10">
+<div class="relative w-40 h-40 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle class="text-surface-container-high" cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-secondary" cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-dasharray="282.7" stroke-dashoffset="56.54" stroke-width="8"></circle>
+</svg>
+<div class="absolute flex flex-col items-center justify-center">
+<span class="font-data-num text-data-num text-text-primary">12,450</span>
+<span class="font-label-md text-label-md text-text-secondary">Total XP</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Earned Badges Grid -->
+<section class="flex flex-col gap-stack-md">
+<h2 class="font-headline-md text-headline-md text-text-primary border-l-2 border-secondary pl-3">Earned Badges</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Badge 1 -->
+<div class="glass-panel rounded-lg p-6 flex flex-col items-center text-center gap-4 hover:border-secondary transition-colors duration-300">
+<div class="w-20 h-20 hexagon bg-gradient-to-br from-secondary to-primary-container flex items-center justify-center shadow-[0_0_20px_rgba(158,202,255,0.3)]">
+<span class="material-symbols-outlined text-surface text-4xl" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-text-primary">10 Session Streak</span>
+<span class="font-body-md text-body-md text-text-secondary text-sm">Consistency is key.</span>
+</div>
+</div>
+<!-- Badge 2 -->
+<div class="glass-panel rounded-lg p-6 flex flex-col items-center text-center gap-4 hover:border-secondary transition-colors duration-300">
+<div class="w-20 h-20 hexagon bg-gradient-to-br from-success-green to-surface-container flex items-center justify-center shadow-[0_0_20px_rgba(40,167,69,0.3)]">
+<span class="material-symbols-outlined text-surface text-4xl" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-text-primary">90% Guard Score</span>
+<span class="font-body-md text-body-md text-text-secondary text-sm">Impenetrable defense.</span>
+</div>
+</div>
+<!-- Badge 3 -->
+<div class="glass-panel rounded-lg p-6 flex flex-col items-center text-center gap-4 hover:border-secondary transition-colors duration-300">
+<div class="w-20 h-20 hexagon bg-gradient-to-br from-tertiary to-tertiary-container flex items-center justify-center shadow-[0_0_20px_rgba(255,179,174,0.3)]">
+<span class="material-symbols-outlined text-surface text-4xl" style="font-variation-settings: 'FILL' 1;">science</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-text-primary">Early Adopter</span>
+<span class="font-body-md text-body-md text-text-secondary text-sm">Lab pioneer.</span>
+</div>
+</div>
+<!-- Badge 4 -->
+<div class="glass-panel rounded-lg p-6 flex flex-col items-center text-center gap-4 hover:border-secondary transition-colors duration-300">
+<div class="w-20 h-20 hexagon bg-gradient-to-br from-warning-yellow to-surface-container flex items-center justify-center shadow-[0_0_20px_rgba(255,193,7,0.3)]">
+<span class="material-symbols-outlined text-surface text-4xl" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md text-text-primary">Speed Demon</span>
+<span class="font-body-md text-body-md text-text-secondary text-sm">Max velocity strike.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Locked Achievements -->
+<section class="flex flex-col gap-stack-md">
+<h2 class="font-headline-md text-headline-md text-text-primary border-l-2 border-border-muted pl-3">In Progress</h2>
+<div class="flex flex-col gap-4">
+<!-- Progress Item 1 -->
+<div class="glass-panel rounded-lg p-5 flex flex-col md:flex-row items-center gap-6">
+<div class="w-14 h-14 rounded-full bg-surface-container-high border border-border-muted flex items-center justify-center opacity-50 grayscale">
+<span class="material-symbols-outlined text-text-secondary text-2xl">sports_mma</span>
+</div>
+<div class="flex-grow w-full flex flex-col gap-2">
+<div class="flex justify-between items-end">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-text-primary">Master of Jabs</span>
+<span class="font-body-md text-body-md text-text-secondary text-sm">Perform 500 clean jabs in training.</span>
+</div>
+<span class="font-data-num text-[16px] text-secondary">342 / 500</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 68%;"></div>
+</div>
+</div>
+</div>
+<!-- Progress Item 2 -->
+<div class="glass-panel rounded-lg p-5 flex flex-col md:flex-row items-center gap-6">
+<div class="w-14 h-14 rounded-full bg-surface-container-high border border-border-muted flex items-center justify-center opacity-50 grayscale">
+<span class="material-symbols-outlined text-text-secondary text-2xl">timer</span>
+</div>
+<div class="flex-grow w-full flex flex-col gap-2">
+<div class="flex justify-between items-end">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-text-primary">Endurance King</span>
+<span class="font-body-md text-body-md text-text-secondary text-sm">Log 50 hours of active sparring.</span>
+</div>
+<span class="font-data-num text-[16px] text-secondary">41 / 50</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 82%;"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Motivational Quote -->
+<section class="py-stack-lg text-center flex flex-col items-center justify-center">
+<span class="material-symbols-outlined text-border-muted text-4xl mb-4">format_quote</span>
+<p class="font-headline-lg text-headline-lg text-text-secondary max-w-2xl italic">
+                "Precision beats power, and timing beats speed."
+            </p>
+<span class="font-label-md text-label-md text-primary mt-4 tracking-widest uppercase">— Conor McGregor</span>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface/80 dark:bg-surface/80 backdrop-blur-lg border-t border-border-muted shadow-lg">
+<button class="flex flex-col items-center justify-center text-text-secondary hover:bg-surface-container-high transition-all rounded-xl px-3 py-1">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md text-[10px]">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-secondary hover:bg-surface-container-high transition-all rounded-xl px-3 py-1">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-md text-label-md text-[10px]">History</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-secondary hover:bg-surface-container-high transition-all rounded-xl px-3 py-1">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-label-md text-label-md text-[10px]">Analysis</span>
+</button>
+<button class="flex flex-col items-center justify-center text-text-secondary hover:bg-surface-container-high transition-all rounded-xl px-3 py-1">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-md text-label-md text-[10px]">Social</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-3 py-1 hover:bg-surface-container-high transition-all active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-md text-label-md text-[10px]">Profile</span>
+</button>
+</nav>
+</body></html>

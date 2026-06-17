@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  fightcoach-api:
+    build:
+      context: .
+      dockerfile: src/FightCoachAI.WebAPI/Dockerfile
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Data Source=mssql;Initial Catalog=FightCoachAI;User Id=sa;Password=FightCoach@2026!;TrustServerCertificate=True
+      - Jwt__Secret=your-super-secret-key-with-at-least-32-characters-change-in-production!!
+      - Redis__ConnectionString=redis:6379
+      - AiService__BaseUrl=http://fightcoach-ai:8000
+      - VideoStorage__UploadPath=/app/uploads/videos
+    volumes:
+      - uploads:/app/uploads
+    depends_on:
+      - mssql
+      - redis
+
+  fightcoach-ai:
+    build:
+      context: ./fightcoach-ai-service
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY:-}
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=FightCoach@2026!
+      - MSSQL_PID=Express
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql-data:/var/opt/mssql
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+volumes:
+  mssql-data:
+  uploads:

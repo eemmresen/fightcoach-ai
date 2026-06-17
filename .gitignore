@@ -1,0 +1,12 @@
+node_modules/
+bin/
+obj/
+.env
+*.user
+uploads/
+*.pyc
+__pycache__/
+.expo/
+dist/
+.vs/
+*.DotSettings.user

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Profile - Strike Lab</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-surface": "#dae2fd",
+                        "text-secondary": "#94a3b8",
+                        "on-primary-fixed-variant": "#184974",
+                        "on-primary-container": "#95bff1",
+                        "on-tertiary-container": "#ffa39e",
+                        "surface-slate": "#1e293b",
+                        "tertiary-fixed-dim": "#ffb3ae",
+                        "border-muted": "#334155",
+                        "surface": "#0b1326",
+                        "surface-tint": "#a0cafc",
+                        "on-tertiary-fixed-variant": "#842324",
+                        "tertiary": "#ffb3ae",
+                        "surface-container-lowest": "#060e20",
+                        "secondary-fixed": "#d1e4ff",
+                        "surface-container": "#171f33",
+                        "on-primary": "#003257",
+                        "surface-container-high": "#222a3d",
+                        "on-error": "#690005",
+                        "background": "#0b1326",
+                        "secondary": "#9ecaff",
+                        "secondary-fixed-dim": "#9ecaff",
+                        "on-tertiary-fixed": "#410005",
+                        "outline-variant": "#42474f",
+                        "inverse-on-surface": "#283044",
+                        "primary-fixed-dim": "#a0cafc",
+                        "on-secondary": "#003258",
+                        "on-background": "#dae2fd",
+                        "text-primary": "#f8fafc",
+                        "secondary-container": "#005c9c",
+                        "surface-container-highest": "#2d3449",
+                        "on-secondary-fixed-variant": "#00497d",
+                        "on-surface": "#dae2fd",
+                        "surface-dim": "#0b1326",
+                        "tertiary-fixed": "#ffdad7",
+                        "success-green": "#28a745",
+                        "surface-bright": "#31394d",
+                        "on-secondary-container": "#b2d4ff",
+                        "outline": "#8c9199",
+                        "primary-container": "#1f4e79",
+                        "primary": "#a0cafc",
+                        "surface-variant": "#2d3449",
+                        "inverse-primary": "#35618d",
+                        "on-primary-fixed": "#001d35",
+                        "error-container": "#93000a",
+                        "primary-fixed": "#d1e4ff",
+                        "error": "#ffb4ab",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-container": "#8a2828",
+                        "surface-container-low": "#131b2e",
+                        "on-surface-variant": "#c2c7d0",
+                        "on-secondary-fixed": "#001d36",
+                        "warning-yellow": "#ffc107",
+                        "on-tertiary": "#640b11"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "gutter": "1.5rem",
+                        "container-max": "1200px",
+                        "stack-sm": "0.5rem",
+                        "stack-md": "1.5rem",
+                        "stack-lg": "3rem",
+                        "margin-mobile": "1rem"
+                    },
+                    fontFamily: {
+                        "headline-lg": ["Montserrat"],
+                        "display-lg-mobile": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "headline-xl": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "data-num": ["Montserrat"]
+                    },
+                    fontSize: {
+                        "headline-lg": ["24px", { lineHeight: "1.3", fontWeight: "700" }],
+                        "display-lg-mobile": ["40px", { lineHeight: "1.1", fontWeight: "900" }],
+                        "display-lg": ["72px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "900" }],
+                        "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "headline-xl": ["32px", { lineHeight: "1.2", fontWeight: "700" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+                        "label-md": ["14px", { lineHeight: "1.2", letterSpacing: "0.05em", fontWeight: "600" }],
+                        "headline-md": ["20px", { lineHeight: "1.4", fontWeight: "600" }],
+                        "data-num": ["28px", { lineHeight: "1", letterSpacing: "-0.01em", fontWeight: "800" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-tech-pattern {
+            background-image: radial-gradient(rgba(158, 202, 255, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24 md:pb-0 pt-16 md:pt-20">
+<!-- TopAppBar (Hidden on Desktop for this specific page as per layout logic, but included as requested) -->
+<header class="bg-surface/70 dark:bg-surface/70 backdrop-blur-md border-b border-border-muted docked full-width top-0 sticky flex justify-between items-center px-margin-mobile h-16 w-full z-50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary dark:text-secondary">analytics</span>
+<span class="font-display-lg-mobile text-headline-lg-mobile italic tracking-tighter text-secondary dark:text-secondary">STRIKE_LAB</span>
+</div>
+<button class="font-label-md text-label-md text-secondary dark:text-secondary hover:text-primary dark:hover:text-primary transition-colors uppercase active:scale-95 duration-100">
+            UPLOAD
+        </button>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-gutter mt-stack-md flex flex-col gap-stack-lg">
+<!-- Profile Header Section -->
+<section class="relative bg-surface-slate rounded-xl p-stack-md border border-border-muted overflow-hidden flex flex-col items-center text-center">
+<div class="absolute inset-0 bg-tech-pattern opacity-50 z-0"></div>
+<div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-secondary-container/30 to-transparent z-0"></div>
+<div class="relative z-10 w-32 h-32 rounded-full border-4 border-surface p-1 bg-surface-container-high mb-stack-sm shadow-lg">
+<img alt="Emre Profile" class="w-full h-full object-cover rounded-full" data-alt="A close-up portrait of a serious, focused male combat athlete with short dark hair, set against a dark, moody gym background. The lighting is dramatic, high-contrast, with subtle blue and red gel highlights creating a technical, high-performance aesthetic typical of elite sports science imagery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn-C-wvEXt0Lsj70kLadZ6NIKmZWVVvUaieYZNtKRIbgmM-2o1ZqsiGU8wLAhGfV0EFSWhWSJZ8KlM_kOerQ7jO9LwZXpyuFxuAcz5jILPEwTh7aH4EpE8KddOdV8hjU3VGLdZvmoPFYT9C53hZFHqIr6D27h-9TgBUFoNvDoZz0HH_M9pUekrBVdYV0TtDPZYkqnE8hIO5qd33tGAmHjPlfFSKZCOSFTyA371-iewsAdL1dyN2oZzFUfZI0xcMD8PG68_W8KfMAY"/>
+<div class="absolute bottom-0 right-0 w-8 h-8 bg-surface-slate border-2 border-surface rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-success-green" style="font-variation-settings: 'FILL' 1; font-size: 16px;">verified</span>
+</div>
+</div>
+<div class="relative z-10 flex flex-col items-center">
+<h1 class="font-headline-xl text-headline-xl text-text-primary mb-1">Emre</h1>
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-surface-container-highest text-secondary font-label-md text-label-md border border-border-muted">
+                    Amateur Boxer
+                </span>
+</div>
+<!-- Key Stats Grid -->
+<div class="relative z-10 w-full grid grid-cols-3 gap-2 md:gap-gutter mt-stack-md">
+<div class="bg-surface-container p-3 rounded-lg border border-border-muted flex flex-col items-center justify-center">
+<span class="font-data-num text-data-num text-text-primary">142</span>
+<span class="font-label-md text-label-md text-text-secondary mt-1">Sessions</span>
+</div>
+<div class="bg-surface-container p-3 rounded-lg border border-secondary/30 flex flex-col items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 bg-secondary/5 z-0"></div>
+<span class="relative z-10 font-data-num text-data-num text-secondary">A+</span>
+<span class="relative z-10 font-label-md text-label-md text-text-secondary mt-1">Fight IQ</span>
+</div>
+<div class="bg-surface-container p-3 rounded-lg border border-border-muted flex flex-col items-center justify-center">
+<div class="flex items-center text-warning-yellow">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 20px;">local_fire_department</span>
+<span class="font-data-num text-data-num ml-1">12</span>
+</div>
+<span class="font-label-md text-label-md text-text-secondary mt-1">Streak</span>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<!-- Personal Bests Section -->
+<section class="bg-surface-slate rounded-xl p-stack-md border border-border-muted flex flex-col">
+<h2 class="font-headline-md text-headline-md text-text-primary mb-stack-sm flex items-center gap-2 border-b border-border-muted pb-2">
+<span class="material-symbols-outlined text-secondary">emoji_events</span>
+                    Personal Bests
+                </h2>
+<div class="flex flex-col gap-2 mt-2">
+<!-- Stat Row -->
+<div class="bg-surface-container rounded-lg p-3 flex justify-between items-center border border-transparent hover:border-border-muted transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-text-secondary">shield</span>
+<span class="font-body-lg text-body-lg text-text-primary">Highest Guard Score</span>
+</div>
+<span class="font-data-num text-[20px] text-text-primary">94%</span>
+</div>
+<!-- Stat Row -->
+<div class="bg-surface-container rounded-lg p-3 flex justify-between items-center border border-transparent hover:border-border-muted transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-text-secondary">speed</span>
+<span class="font-body-lg text-body-lg text-text-primary">Peak Hand Speed</span>
+</div>
+<div class="flex items-end gap-1">
+<span class="font-data-num text-[20px] text-text-primary">8.2</span>
+<span class="font-label-md text-[10px] text-text-secondary mb-1">m/s</span>
+</div>
+</div>
+<!-- Stat Row -->
+<div class="bg-surface-container rounded-lg p-3 flex justify-between items-center border border-transparent hover:border-border-muted transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-text-secondary">fitness_center</span>
+<span class="font-body-lg text-body-lg text-text-primary">Max Impact Force</span>
+</div>
+<div class="flex items-end gap-1">
+<span class="font-data-num text-[20px] text-text-primary">1250</span>
+<span class="font-label-md text-[10px] text-text-secondary mb-1">N</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Navigation Links Section -->
+<section class="bg-surface-slate rounded-xl border border-border-muted flex flex-col overflow-hidden">
+<h2 class="font-headline-md text-headline-md text-text-primary p-stack-sm px-stack-md flex items-center gap-2 border-b border-border-muted bg-surface-container-low">
+<span class="material-symbols-outlined text-secondary">settings</span>
+                    Account Management
+                </h2>
+<div class="flex flex-col">
+<a class="p-4 flex items-center justify-between hover:bg-surface-container transition-colors border-b border-border-muted/50 group" href="#">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-high flex items-center justify-center border border-border-muted group-hover:border-secondary transition-colors">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-secondary">video_library</span>
+</div>
+<span class="font-body-lg text-body-lg text-text-primary">My Videos</span>
+</div>
+<span class="material-symbols-outlined text-text-secondary group-hover:text-text-primary transition-colors">chevron_right</span>
+</a>
+<a class="p-4 flex items-center justify-between hover:bg-surface-container transition-colors border-b border-border-muted/50 group" href="#">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-high flex items-center justify-center border border-border-muted group-hover:border-secondary transition-colors">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-secondary">workspace_premium</span>
+</div>
+<span class="font-body-lg text-body-lg text-text-primary">Achievements</span>
+</div>
+<span class="material-symbols-outlined text-text-secondary group-hover:text-text-primary transition-colors">chevron_right</span>
+</a>
+<a class="p-4 flex items-center justify-between hover:bg-surface-container transition-colors group" href="#">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-high flex items-center justify-center border border-border-muted group-hover:border-secondary transition-colors">
+<span class="material-symbols-outlined text-text-secondary group-hover:text-secondary">security</span>
+</div>
+<span class="font-body-lg text-body-lg text-text-primary">Account Security</span>
+</div>
+<span class="material-symbols-outlined text-text-secondary group-hover:text-text-primary transition-colors">chevron_right</span>
+</a>
+</div>
+</section>
+</div>
+<!-- Logout Button -->
+<button class="w-full md:w-auto self-center mt-stack-sm mb-stack-lg px-6 py-3 rounded-lg border-2 border-error text-error font-label-md text-label-md hover:bg-error/10 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">logout</span>
+            SIGN OUT
+        </button>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface/80 dark:bg-surface/80 backdrop-blur-lg shadow-lg docked full-width bottom-0 fixed fixed bottom-0 w-full z-50 flex justify-around items-center px-2 py-3">
+<a class="flex flex-col items-center justify-center text-text-secondary hover:bg-surface-container-high transition-all rounded-xl px-3 py-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary hover:bg-surface-container-high transition-all rounded-xl px-3 py-1" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-md text-label-md mt-1">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary hover:bg-surface-container-high transition-all rounded-xl px-3 py-1" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-md text-label-md mt-1">Analysis</span>
+</a>
+<a class="flex flex-col items-center justify-center text-text-secondary hover:bg-surface-container-high transition-all rounded-xl px-3 py-1" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-md text-label-md mt-1">Social</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-3 py-1 scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-md text-label-md mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Strike Lab - Premium Upgrade</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,900&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-variant": "#2d3449",
+                      "secondary": "#9ecaff",
+                      "on-secondary-fixed-variant": "#00497d",
+                      "on-error-container": "#ffdad6",
+                      "outline": "#8c9199",
+                      "on-secondary-fixed": "#001d36",
+                      "on-tertiary": "#640b11",
+                      "primary-fixed-dim": "#a0cafc",
+                      "surface": "#0b1326",
+                      "surface-container-low": "#131b2e",
+                      "surface-container": "#171f33",
+                      "inverse-primary": "#35618d",
+                      "on-primary-container": "#95bff1",
+                      "on-secondary-container": "#b2d4ff",
+                      "on-primary": "#003257",
+                      "tertiary": "#ffb3ae",
+                      "surface-bright": "#31394d",
+                      "primary": "#a0cafc",
+                      "primary-container": "#1f4e79",
+                      "secondary-fixed": "#d1e4ff",
+                      "on-surface-variant": "#c2c7d0",
+                      "inverse-on-surface": "#283044",
+                      "surface-tint": "#a0cafc",
+                      "secondary-container": "#005c9c",
+                      "tertiary-fixed-dim": "#ffb3ae",
+                      "on-error": "#690005",
+                      "tertiary-container": "#8a2828",
+                      "surface-container-highest": "#2d3449",
+                      "on-primary-fixed-variant": "#184974",
+                      "success-green": "#28a745",
+                      "text-primary": "#f8fafc",
+                      "surface-dim": "#0b1326",
+                      "text-secondary": "#94a3b8",
+                      "tertiary-fixed": "#ffdad7",
+                      "on-secondary": "#003258",
+                      "on-primary-fixed": "#001d35",
+                      "border-muted": "#334155",
+                      "error": "#ffb4ab",
+                      "on-tertiary-fixed-variant": "#842324",
+                      "on-tertiary-fixed": "#410005",
+                      "primary-fixed": "#d1e4ff",
+                      "warning-yellow": "#ffc107",
+                      "background": "#0b1326",
+                      "secondary-fixed-dim": "#9ecaff",
+                      "on-surface": "#dae2fd",
+                      "error-container": "#93000a",
+                      "surface-container-lowest": "#060e20",
+                      "surface-container-high": "#222a3d",
+                      "surface-slate": "#1e293b",
+                      "outline-variant": "#42474f",
+                      "on-background": "#dae2fd",
+                      "inverse-surface": "#dae2fd",
+                      "on-tertiary-container": "#ffa39e",
+                      "premium-gold": "#F59E0B" // Adding a tactical gold for premium
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-sm": "0.5rem",
+                      "stack-md": "1.5rem",
+                      "gutter": "1.5rem",
+                      "margin-mobile": "1rem",
+                      "stack-lg": "3rem",
+                      "container-max": "1200px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Montserrat"
+                      ],
+                      "data-num": [
+                              "Montserrat"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display-lg-mobile": [
+                              "Montserrat"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-xl": [
+                              "Montserrat"
+                      ],
+                      "display-lg": [
+                              "Montserrat"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Montserrat"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "data-num": [
+                              "28px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "fontWeight": "900"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-xl": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "72px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "900"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        .premium-gradient {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(11, 19, 38, 0) 100%);
+        }
+        .premium-border {
+            border: 1px solid #F59E0B;
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.15);
+        }
+        /* No scrollbar for clean look */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        body {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-text-primary antialiased font-body-md selection:bg-secondary/30 min-h-screen flex flex-col">
+<!-- Top Navigation App Bar -->
+<!-- Content: Transactional/Paywall screen, so navigation cluster is suppressed, keeping only brand and maybe close action -->
+<header class="flex justify-between items-center px-margin-mobile h-16 w-full z-50 sticky top-0 full-width bg-surface/70 dark:bg-surface/70 backdrop-blur-md border-b border-border-muted flat no shadows">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary dark:text-secondary" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-display-lg-mobile text-headline-lg-mobile italic tracking-tighter text-secondary dark:text-secondary uppercase">STRIKE_LAB</span>
+</div>
+<button class="text-text-secondary dark:text-text-secondary hover:text-primary transition-colors flex items-center justify-center p-2 rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">close</span>
+</button>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow flex flex-col items-center pb-24 w-full">
+<!-- Hero Section -->
+<section class="w-full max-w-container-max px-margin-mobile pt-stack-lg pb-stack-md flex flex-col items-center text-center relative overflow-hidden">
+<!-- Decorative Premium Glow -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-premium-gold/10 blur-[100px] rounded-full pointer-events-none"></div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high border border-premium-gold/30 mb-stack-sm text-premium-gold font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span>STRIKE_LAB ELITE</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl md:font-display-lg md:text-display-lg mb-stack-sm text-text-primary tracking-tight">
+                Unlock Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-premium-gold to-yellow-200">Full Potential</span>
+</h1>
+<p class="font-body-lg text-body-lg text-text-secondary max-w-2xl mx-auto">
+                Dominate the data. Get professional-grade analytics, AI coaching, and unlimited breakdown reports designed for elite fighters.
+            </p>
+</section>
+<!-- Pricing Cards Section -->
+<section class="w-full max-w-5xl px-margin-mobile flex flex-col md:flex-row justify-center items-stretch gap-gutter mb-stack-lg z-10 relative">
+<!-- Monthly Card -->
+<div class="flex-1 bg-surface-slate border border-border-muted rounded-xl p-stack-md flex flex-col">
+<div class="mb-stack-md border-b border-border-muted pb-stack-sm">
+<h3 class="font-headline-md text-headline-md text-text-primary mb-1">Monthly</h3>
+<div class="flex items-baseline gap-1">
+<span class="font-data-num text-data-num text-text-primary">$19.99</span>
+<span class="font-body-md text-body-md text-text-secondary">/mo</span>
+</div>
+</div>
+<div class="flex-grow">
+<p class="font-body-md text-body-md text-text-secondary mb-stack-sm">Flexible performance tracking.</p>
+</div>
+<button class="w-full py-3 rounded-lg border-2 border-secondary text-secondary font-label-md text-label-md hover:bg-secondary/10 transition-colors mt-stack-md">
+                    Choose Monthly
+                </button>
+</div>
+<!-- Annual Card (Premium/Featured) -->
+<div class="flex-1 bg-surface-container-highest premium-border rounded-xl p-stack-md flex flex-col relative transform md:-translate-y-4 premium-gradient">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-premium-gold text-surface-dim px-4 py-1 rounded-full font-label-md text-label-md font-bold uppercase tracking-wider shadow-[0_0_15px_rgba(245,158,11,0.5)]">
+                    Best Value
+                </div>
+<div class="mb-stack-md border-b border-premium-gold/30 pb-stack-sm">
+<h3 class="font-headline-md text-headline-md text-text-primary mb-1">Annual</h3>
+<div class="flex items-baseline gap-1">
+<span class="font-data-num text-data-num text-premium-gold">$199.99</span>
+<span class="font-body-md text-body-md text-text-secondary">/yr</span>
+</div>
+<p class="font-label-md text-label-md text-success-green mt-1">Save 16% annually</p>
+</div>
+<div class="flex-grow">
+<p class="font-body-md text-body-md text-text-primary mb-stack-sm font-semibold">Everything in Monthly, plus:</p>
+<ul class="space-y-3">
+<li class="flex items-start gap-2">
+<span class="text-premium-gold mt-1 text-sm">▸</span>
+<span class="font-body-md text-body-md text-text-secondary">Priority AI Processing</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-premium-gold mt-1 text-sm">▸</span>
+<span class="font-body-md text-body-md text-text-secondary">1-on-1 Data Consultation (1/yr)</span>
+</li>
+</ul>
+</div>
+<button class="w-full py-3 rounded-lg bg-premium-gold text-surface-dim font-label-md text-label-md hover:bg-yellow-400 transition-colors mt-stack-md font-bold shadow-[0_4px_12px_rgba(245,158,11,0.3)] hover:shadow-[0_6px_16px_rgba(245,158,11,0.5)]">
+                    Upgrade to Annual
+                </button>
+</div>
+</section>
+<!-- Feature Comparison Table -->
+<section class="w-full max-w-4xl px-margin-mobile mb-stack-lg">
+<h2 class="font-headline-lg text-headline-lg text-center mb-stack-md">Compare Plans</h2>
+<div class="bg-surface-slate rounded-xl border border-border-muted overflow-hidden">
+<!-- Header Row -->
+<div class="grid grid-cols-3 p-4 border-b border-border-muted bg-surface-container">
+<div class="col-span-1 font-label-md text-label-md text-text-secondary uppercase">Features</div>
+<div class="col-span-1 text-center font-label-md text-label-md text-text-secondary">Free</div>
+<div class="col-span-1 text-center font-label-md text-label-md text-premium-gold font-bold">Elite</div>
+</div>
+<!-- Rows -->
+<div class="grid grid-cols-3 p-4 border-b border-border-muted/50 items-center">
+<div class="col-span-1 font-body-md text-body-md text-text-primary">Match Analysis</div>
+<div class="col-span-1 text-center font-body-md text-body-md text-text-secondary">3 / month</div>
+<div class="col-span-1 text-center font-body-md text-body-md text-text-primary font-semibold">Unlimited</div>
+</div>
+<div class="grid grid-cols-3 p-4 border-b border-border-muted/50 items-center bg-surface-container-low/30">
+<div class="col-span-1 font-body-md text-body-md text-text-primary">Combination Breakdown</div>
+<div class="col-span-1 text-center">
+<span class="material-symbols-outlined text-border-muted">close</span>
+</div>
+<div class="col-span-1 text-center">
+<span class="material-symbols-outlined text-premium-gold">check</span>
+</div>
+</div>
+<div class="grid grid-cols-3 p-4 border-b border-border-muted/50 items-center">
+<div class="col-span-1 font-body-md text-body-md text-text-primary">AI Coach Pro</div>
+<div class="col-span-1 text-center">
+<span class="material-symbols-outlined text-border-muted">close</span>
+</div>
+<div class="col-span-1 text-center">
+<span class="material-symbols-outlined text-premium-gold">check</span>
+</div>
+</div>
+<div class="grid grid-cols-3 p-4 items-center bg-surface-container-low/30">
+<div class="col-span-1 font-body-md text-body-md text-text-primary">Export PDF Reports</div>
+<div class="col-span-1 text-center">
+<span class="material-symbols-outlined text-border-muted">close</span>
+</div>
+<div class="col-span-1 text-center">
+<span class="material-symbols-outlined text-premium-gold">check</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Social Proof & Bottom CTA -->
+<section class="w-full max-w-container-max px-margin-mobile text-center flex flex-col items-center">
+<div class="flex items-center gap-2 mb-4">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border-2 border-surface flex items-center justify-center overflow-hidden" data-alt="Close up portrait of a serious MMA fighter wrapping their hands in a dimly lit, gritty boxing gym. Cinematic lighting, professional sports photography.">
+<!-- Placeholder for user avatar -->
+<div class="w-full h-full bg-surface-bright bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCXgb34yMOhF5rg60yBzjECptg5dGjGkd9OnPPv10EdRFIDs-RtLumTHBv73xNvqSOo2BUXRlzcC-5oQNSbtQJ0wzceh1dX6W_YKc84bIcsilgnKhQp2As8cHZZsvCWliy38a1nn6VYMvrCkP5sH5hpoF6EfFGxJrt6YyLoYzGODiTQQYGQr-PFz0d8gi8ak8u1LgICqMGZgTQBYyksXmxQRPxtGV2Q7uzoU3fUIrXq1AHH73Z8FOjoZqB1xnAELFNAwwtzkWPm-lQ');"></div>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border-2 border-surface flex items-center justify-center overflow-hidden" data-alt="Profile shot of an athletic coach in a dark performance lab looking at data on a tablet. Moody lighting, tech-focused environment.">
+<div class="w-full h-full bg-surface-bright bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCmATtLRKGnYEOGFIS1MaUgHyFAjmVCBsyLDb2Xuiw8htg_o_BSC8VsHD5U9Xw2s5pjRNsTiCNlEqOO1PL52LqrWmwqK6KptgZoRSgJHmh_FcK0RaKa7om3SlMZwld-LB5bMtK7-pJUn8W7EqhCwNf7ts75puxLfgXb_UY4eqxcSwvF2woH3aIYPPy4GjL3dw94JK-bzCT5RE3ajHImJzpSLc0mQbYn61XjyGH1OdIuR_z3kHVr6L_d41ezwTu0IHIxZAcDJzuPTQQ');"></div>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border-2 border-surface flex items-center justify-center overflow-hidden" data-alt="Action shot of a kickboxer executing a high kick in a dark arena with a spotlight. High contrast, dynamic energy.">
+<div class="w-full h-full bg-surface-bright bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDyf2LPPHBvx13HRUt8xKOYOUlWKlpsy8aciw20Vq0yilcKNQGd8Ek3AHXXWLwvwiUyNwJFL_WSv7qMmozS_PjN2y2Uln-SqMaPJApS_fHJPhz5uwe_AmyCFzFv_Ezwm9hzdyBHvmM80PBxYDfjDQDyYs31NWHNPC0XPBs-zHmKSVJj9c0Ag1NFVg5WKJGBJjtXk88SCxX712BM8lcJq0v91mh_55pfewcyc95TjYz9D5RIzwksXJPBH2a7irbvM4FXWsjKVrdtmoY');"></div>
+</div>
+</div>
+<span class="font-label-md text-label-md text-text-secondary">Joined by 5,000+ Fighters</span>
+</div>
+</section>
+</main>
+<!-- Navigation Shell Suppression:
+         This is a transactional Paywall/Upsell screen. It acts as an interruption to the main flow.
+         The user intent here is linear (decide to buy or close).
+         Therefore, the BottomNavBar and main navigation items in TopAppBar are SUPPRESSED per rules.
+         The canvas is prioritized. -->
+</body></html>

@@ -1,0 +1,454 @@
+# FightCoach AI
+
+## Yapay Zeka Destekli Dövüş Sporları Analiz Platformu
+
+### Teknik ve İş Analizi Dokümanı
+
+---
+
+# 1. Executive Summary
+
+FightCoach AI, dövüş sporlarıyla ilgilenen bireylerin antrenman ve sparring videolarını yükleyerek yapay zeka destekli teknik analiz alabilecekleri SaaS tabanlı bir platformdur.
+
+Platformun amacı;
+
+* Teknik hataları tespit etmek
+* Savunma eksikliklerini belirlemek
+* Ayak hareketlerini analiz etmek
+* Kombinasyon çeşitliliğini ölçmek
+* Kullanıcının zaman içerisindeki gelişimini takip etmek
+
+şeklinde özetlenebilir.
+
+FightCoach AI, "ChatGPT for Fighters" değil, "Strava for Fighters" yaklaşımıyla konumlandırılacaktır.
+
+---
+
+# 2. Problem Tanımı
+
+Dövüş sporlarıyla ilgilenen milyonlarca kişi aşağıdaki problemleri yaşamaktadır:
+
+### Teknik Geri Bildirim Eksikliği
+
+Amatör sporcuların çoğu sürekli özel koç desteği alamamaktadır.
+
+### Video Analizinin Zorluğu
+
+Antrenörlerin video analizi yapması oldukça zaman almaktadır.
+
+### Objektif Ölçüm Eksikliği
+
+Sporcular gelişimlerini sayısal olarak takip edememektedir.
+
+### Veri Eksikliği
+
+Sporcular;
+
+* Kaç jab attığını
+* Kaç kez gard düşürdüğünü
+* Kaç kez geri çekildiğini
+
+bilmemektedir.
+
+---
+
+# 3. Çözüm
+
+FightCoach AI şu yapıyı kullanacaktır:
+
+Video
++
+Pose Detection
++
+Action Recognition
++
+AI Coach
+========
+
+FightCoach AI
+
+Kullanıcı video yükler.
+
+Sistem:
+
+* Vücut noktalarını çıkarır
+* Hareketleri analiz eder
+* Hataları tespit eder
+* Fight IQ skoru oluşturur
+
+---
+
+# 4. Hedef Kitle
+
+## Birincil Hedef Kitle
+
+* Boks Sporcuları
+* Kick Boks Sporcuları
+* Muay Thai Sporcuları
+* MMA Sporcuları
+
+## İkincil Hedef Kitle
+
+* Dövüş Sporları Salonları
+* Kişisel Antrenörler
+* Kulüpler
+* Federasyonlar
+
+---
+
+# 5. Ürün Özellikleri
+
+## Video Yükleme
+
+Kullanıcı:
+
+* MP4
+* MOV
+* AVI
+
+formatlarında video yükler.
+
+---
+
+## Fight IQ Analizi
+
+Örnek çıktı:
+
+Fight IQ: 74/100
+
+Guard Score: 82
+
+Footwork Score: 69
+
+Attack Score: 77
+
+Defense Score: 70
+
+---
+
+## Teknik Hata Analizi
+
+Örnek:
+
+* Sol gard sürekli düşüyor
+* Jab sonrası geri çekilmiyorsun
+* Sağ hook sırasında denge bozuluyor
+
+---
+
+## Gelişim Takibi
+
+Aylık grafikler:
+
+Ocak: 61
+
+Şubat: 66
+
+Mart: 73
+
+Nisan: 79
+
+---
+
+# 6. Teknik Mimari
+
+## Frontend
+
+Teknoloji:
+
+* Next.js
+* React
+* Tailwind CSS
+
+---
+
+## Backend
+
+Teknoloji:
+
+* ASP.NET Core 8 Web API
+
+Katmanlar:
+
+* API
+* Application
+* Domain
+* Infrastructure
+
+Mimari:
+
+Clean Architecture
+
+---
+
+## AI Katmanı
+
+Python tabanlı ayrı servis.
+
+Teknolojiler:
+
+* FastAPI
+* PyTorch
+* OpenCV
+
+---
+
+## Veritabanı
+
+PostgreSQL
+
+Tablolar:
+
+Users
+
+Videos
+
+VideoFrames
+
+AnalysisResults
+
+FightIqScores
+
+Subscriptions
+
+---
+
+# 7. Pose Detection
+
+Kullanılabilecek sistemler:
+
+* MediaPipe Pose
+* YOLO Pose
+
+Tespit Edilen Noktalar:
+
+* Omuzlar
+* Dirsekler
+* Bilekler
+* Kalça
+* Dizler
+* Ayak Bilekleri
+
+---
+
+# 8. Analiz Motoru
+
+## Guard Analizi
+
+Kontroller:
+
+* El pozisyonu
+* Çene koruması
+* Omuz yüksekliği
+
+---
+
+## Footwork Analizi
+
+Kontroller:
+
+* Ayak açıklığı
+* Ağırlık merkezi
+* Denge
+
+---
+
+## Kombinasyon Analizi
+
+Örnek:
+
+Jab
+
+Cross
+
+Hook
+
+Sistem tekrar eden kombinasyonları ölçer.
+
+---
+
+# 9. AI Coach Sistemi
+
+Örnek çıktı:
+
+"Son videoda savunma performansın önceki videoya göre %12 arttı. Ancak sağ elini saldırı sonrasında yeterince hızlı geri çekmiyorsun."
+
+---
+
+# 10. Fight IQ Algoritması
+
+Örnek Ağırlıklar
+
+Guard: %25
+
+Defense: %25
+
+Footwork: %20
+
+Attack: %20
+
+Consistency: %10
+
+Toplam:
+
+100 Puan
+
+---
+
+# 11. SaaS Gelir Modeli
+
+## Ücretsiz
+
+Aylık:
+
+3 analiz
+
+---
+
+## Premium
+
+Aylık:
+
+19.99 USD
+
+Sınırsız analiz
+
+Gelişim raporları
+
+AI Coach
+
+---
+
+## Pro Coach
+
+49.99 USD
+
+Çoklu sporcu yönetimi
+
+Salon paneli
+
+---
+
+# 12. Marketing Stratejisi
+
+## TikTok
+
+Video yükle
+
+Fight IQ sonucu al
+
+Paylaş
+
+---
+
+## Instagram
+
+Önce / Sonra analizleri
+
+---
+
+## YouTube Shorts
+
+AI analiz videoları
+
+---
+
+## Spor Salonları
+
+İlk 50 salona ücretsiz kullanım
+
+---
+
+# 13. Viral Büyüme
+
+Her analiz sonunda:
+
+Fight IQ Card
+
+oluşturulacaktır.
+
+Örnek:
+
+Fight IQ
+
+78/100
+
+Guard
+
+82
+
+Defense
+
+75
+
+Bu kart sosyal medyada paylaşılabilir olacaktır.
+
+---
+
+# 14. Risk Analizi
+
+Riskler:
+
+* Düşük kaliteli videolar
+* Kötü kamera açıları
+* Farklı spor disiplinleri
+* Yanlış analizler
+
+Çözüm:
+
+* Video kalite kontrolü
+* Çoklu model doğrulaması
+* İnsan geri bildirim sistemi
+
+---
+
+# 15. Yol Haritası
+
+## V1
+
+Video Analizi
+
+Fight IQ
+
+Temel AI Coach
+
+---
+
+## V2
+
+Kombinasyon Tanıma
+
+Rakip Analizi
+
+---
+
+## V3
+
+Gerçek Zamanlı Analiz
+
+Canlı Kamera
+
+---
+
+## V4
+
+Kişisel AI Antrenör
+
+Sesli Geri Bildirim
+
+Antrenman Planı
+
+---
+
+# Sonuç
+
+FightCoach AI, dövüş sporları alanında Strava benzeri veri odaklı bir platform olarak konumlandırılabilir.
+
+Teknik olarak en kritik bileşenler:
+
+* Pose Detection
+* Action Recognition
+* Fight IQ Engine
+* AI Coach
+
+Ticari olarak en güçlü taraf ise sporcuların gelişimlerini sayısal ve görsel olarak takip edebilmeleridir.
