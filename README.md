@@ -6,7 +6,6 @@
   <img src="https://img.shields.io/badge/Expo-SDK%2056-000020?logo=expo" alt="Expo SDK 56" />
   <img src="https://img.shields.io/badge/Python-3.14-3776AB?logo=python" alt="Python 3.14" />
   <img src="https://img.shields.io/badge/MSSQL-2022-CC2927?logo=microsoft-sql-server" alt="MSSQL 2022" />
-  <img src="https://img.shields.io/badge/Redis-7-DC382D?logo=redis" alt="Redis 7" />
 </p>
 
 **FightCoach AI** is an AI-powered mobile application for fight sports athletes. Upload your training or sparring video and get instant technical analysis — guard score, footwork quality, attack readiness, defense stance — all combined into a single **Fight IQ** score. Think **Strava for fighters**.
@@ -21,11 +20,9 @@
 - [Project Structure](#project-structure)
 - [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
-  - [Quick Start (Docker)](#quick-start-docker)
-  - [Manual Setup](#manual-setup)
-    - [1. Backend API (.NET)](#1-backend-api-net)
-    - [2. AI Service (Python)](#2-ai-service-python)
-    - [3. Mobile App (React Native)](#3-mobile-app-react-native)
+  - [1. Backend API (.NET)](#1-backend-api-net)
+  - [2. AI Service (Python)](#2-ai-service-python)
+  - [3. Mobile App (React Native)](#3-mobile-app-react-native)
 - [API Endpoints](#api-endpoints)
 - [Architecture Decisions](#architecture-decisions)
 - [License](#license)
@@ -63,15 +60,14 @@
 │   ┌──────────────┐  ┌─────────┐      │
 │   │Infrastructure│  │ WebAPI  │       │
 │   └──────────────┘  └─────────┘      │
-└──────┬───────────┬──────────┬────────┘
-       │           │          │
-┌──────▼──┐ ┌──────▼──┐ ┌────▼──────┐
-│ MSSQL   │ │  Redis   │ │ Local     │
-│ EF Core │ │  Cache   │ │ Storage   │
-└─────────┘ └─────────┘ │ (videos)  │
-                         └─────┬─────┘
-                               │ HTTP (Channel<T>)
-┌──────────────────────────────▼───────┐
+└──────┬──────────────┬────────────────┘
+       │              │
+┌──────▼─────┐ ┌──────▼──────────┐
+│ MSSQL      │ │ Local Storage   │
+│ EF Core    │ │ (videos)        │
+└────────────┘ └──────┬──────────┘
+                      │ HTTP (Channel<T>)
+┌─────────────────────▼────────────────┐
 │    Python FastAPI AI Service          │
 │    ┌────────────┐  ┌────────────┐    │
 │    │ MediaPipe   │  │ DeepSeek   │    │
@@ -94,14 +90,12 @@
 | **Architecture** | Clean / Onion Architecture |
 | **ORM** | Entity Framework Core 10 |
 | **Database** | Microsoft SQL Server 2022 |
-| **Cache** | Redis 7 |
 | **Auth** | JWT Bearer (Access + Refresh tokens) |
 | **AI Service** | Python 3.14 + FastAPI |
 | **Pose Detection** | MediaPipe BlazePose |
 | **LLM Coach** | DeepSeek API |
-| **Video Processing** | OpenCV, FFmpeg |
+| **Video Processing** | OpenCV |
 | **Message Queue** | In-memory `Channel<T>` (no external MQ) |
-| **Containerization** | Docker + Docker Compose |
 
 ---
 
@@ -109,7 +103,6 @@
 
 ```
 figthClup/
-├── docker-compose.yml                     # All services orchestration
 ├── FightCoachAI.sln                       # .NET solution
 │
 ├── src/
@@ -147,52 +140,30 @@ figthClup/
 | .NET SDK | 10.0+ | Backend API |
 | Node.js | 22+ | Mobile app |
 | Python | 3.12+ | AI service |
-| Docker | 24+ | Containerized run (all services) |
+| MSSQL | 2022+ (or LocalDB) | Database |
 
 ---
 
 ## Getting Started
 
-### Quick Start (Docker)
+### 1. Backend API (.NET)
 
 ```bash
-# Clone the repo
-git clone https://github.com/eemmresen/fightcoach-ai.git
-cd fightcoach-ai
-
-# Start all services
-docker-compose up
-```
-
-This starts:
-- **API** at http://localhost:5000 (Swagger at /swagger)
-- **AI Service** at http://localhost:8000
-- **MSSQL** at localhost:1433
-- **Redis** at localhost:6379
-
-### Manual Setup
-
-#### 1. Backend API (.NET)
-
-```bash
-cd fightcoach-ai/src/FightCoachAI.WebAPI
+cd figthClup/src/FightCoachAI.WebAPI
 
 # Restore + run
 dotnet restore
 dotnet run
-
-# Or with custom port
-dotnet run --urls http://localhost:5000
 ```
 
-Open http://localhost:5000/swagger to explore the API.
+Open `http://localhost:5263/swagger` (or the port shown in terminal) to explore the API.
 
-**Database**: Update `appsettings.json` → `ConnectionStrings.DefaultConnection` with your MSSQL connection string. First run will auto-apply migrations.
+**Database**: Update `appsettings.json` → `ConnectionStrings.DefaultConnection` with your MSSQL connection string. When running for the first time, apply migrations manually or use EF Core's `EnsureCreated()`.
 
-#### 2. AI Service (Python)
+### 2. AI Service (Python)
 
 ```bash
-cd fightcoach-ai/fightcoach-ai-service
+cd figthClup/fightcoach-ai-service
 
 # Create virtual environment (recommended)
 python -m venv venv
@@ -210,10 +181,10 @@ set DEEPSEEK_API_KEY=sk-your-key-here   # Windows
 uvicorn app.main:app --port 8000
 ```
 
-#### 3. Mobile App (React Native)
+### 3. Mobile App (React Native)
 
 ```bash
-cd fightcoach-ai/fightcoach-mobile
+cd figthClup/fightcoach-mobile
 
 # Install dependencies
 npm install
